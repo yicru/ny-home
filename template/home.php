@@ -1,0 +1,96 @@
+<?php
+//$page_dataに投稿に関するデータが格納されている
+//ページ情報
+$page_meta = [
+    //url canonical
+    'canonical' => $blog_info['home-url'],
+    //title 文字列
+    'title' => $blog_info['name'],
+    'description' => '',
+    'og' => [
+        'type' => 'website',
+        'locale' => 'ja_JP',
+    ],
+    'twitter' => [
+        //twitter user名
+        'site' => '',
+    ]
+];
+//現在のインデントの個数
+$indent_level = 0;
+
+//GETパラメータに"debug"を追加している場合圧縮しない
+if( !isset($_GET["debug"]) ){
+    //バッファリングスタート
+    ob_start();
+} else {
+    echo "<script>console.log('debugが有効です、HTMLファイルを圧縮せずに出力しています。');</script>";
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+    <head><?php //余計な改行、インデントを防ぐためのタグ開始位置
+
+        //現在のインデントの個数
+        $indent_level = 2;
+        ?>
+
+        <!-- head内のtitle, meta, icon等 -->
+        <?php include( "parts/head.php" )?>
+        <!-- end head内のtitle, meta、icon等 -->
+
+        <!-- font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+
+        <!-- css共通<?php //<link rel="stylesheet" href="css/reset.css">?> -->
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- css-ページ用<?php //<link rel="stylesheet" href="css/index.css">?> -->
+    </head>
+    <body><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+        //現在のインデントの個数
+        $indent_level = 2;?>
+
+        <!-- header -->
+        <?php include( "parts/header.php" )?>
+        <!-- end header -->
+
+        <main><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+            //現在のインデントの個数
+            $indent_level = 3;?>
+
+            <!-- キービジュアル -->
+            <?php include( "parts/top-kv.php" )?>
+            <!-- end キービジュアル -->
+
+            <!-- 記事一覧 -->
+            <?php include( "parts/top-loop.php" )?>
+            <!-- end 記事一覧 -->
+        </main><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+        //現在のインデントの個数
+        $indent_level = 2;?>
+
+
+        <!-- ページ下部バナー -->
+        <?php include( "parts/bnr.php" )?>
+        <!-- end ページ下部バナー -->
+
+        <!-- footer -->
+        <?php include( "parts/footer.php" )?>
+        <!-- end footer -->
+    </body>
+</html>
+<?php
+//GETパラメータに"debug"を追加している場合圧縮しない
+if( isset($_GET["debug"]) ){
+    //バッファ終了、改行余計な空白削除して出力
+    $compress = ob_get_clean();
+    $compress = str_replace("\t", '', $compress);
+    $compress = str_replace("\r", '', $compress);
+    $compress = str_replace("\n", '', $compress);
+    $compress = preg_replace('/<!--[\s\S]*?-->/', '', $compress);
+    echo $compress;
+}
+?>

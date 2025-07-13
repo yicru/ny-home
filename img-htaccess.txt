@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME} (.*)\.(jpe?g|png|gif)$
+RewriteCond %{REQUEST_FILENAME}\.webp -f
+RewriteCond %{QUERY_STRING} !type=original
+RewriteRule (.+)\.(jpe?g|png|gif)$ %{REQUEST_FILENAME}.webp [T=image/webp,L] </IfModule>
+<IfModule mod_headers.c>
+<FilesMatch "\.(jpe?g|png|gif)$">
+Header append Vary Accept
+</FilesMatch>
+</IfModule>
+AddType image/webp .webp
+</IfModule>
