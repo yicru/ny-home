@@ -1,4 +1,15 @@
 <?php
+/*ページ概要
+1ページのみなのでindexで完結
+pc版のスタイルは
+https://marukawa-reform.com/
+こんな感じのデザインになる
+
+トップページだけなので細かくいじるのはhome.phpのみ
+
+cssはscssでページごとに出し分け
+
+*/
 //このサイトのメタデータ等を読み込む
 include( 'data/site-data.php' );
 //共通関数
@@ -9,6 +20,7 @@ $indent = $blog_info['site_meta']['indent'];
 $indent_level = 0;
 
 //slug、パーマリンク設定には非対応
+//todo slug対応
 //p id 45はトップページ、pidが設定されていないか、idが45だったらトップページとして扱う
 $page_id = 45;
 //トップページのデータを仮で入れておく

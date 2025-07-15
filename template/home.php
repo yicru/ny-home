@@ -42,55 +42,79 @@ if( !isset($_GET["debug"]) ){
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- TODO:使用フォントの設定 -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
-        <!-- css共通<?php //<link rel="stylesheet" href="css/reset.css">?> -->
-        <link rel="stylesheet" href="css/style.css">
+        <!-- css共通 -->
+        <link rel="stylesheet" href="css/style-index.css">
 
         <!-- css-ページ用<?php //<link rel="stylesheet" href="css/index.css">?> -->
     </head>
-    <body><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+    <body class="bl_spArea"><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
         //現在のインデントの個数
         $indent_level = 2;?>
 
-        <!-- header -->
-        <?php include( "parts/header.php" )?>
-        <!-- end header -->
-
-        <main><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+        <div class="bl_spArea_inner"><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
             //現在のインデントの個数
             $indent_level = 3;?>
 
-            <!-- キービジュアル -->
-            <?php include( "parts/top-kv.php" )?>
-            <!-- end キービジュアル -->
+            <?php
+            //ヘッダー
+            include( "parts/bl_header/header.php" )?>
 
-            <!-- 記事一覧 -->
-            <?php include( "parts/top-loop.php" )?>
-            <!-- end 記事一覧 -->
-        </main><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
-        //現在のインデントの個数
-        $indent_level = 2;?>
+            <main><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+                //現在のインデントの個数
+                $indent_level = 4;?>
 
+                <?php
+                //キービジュアル
+                include( "parts/bl_kv/kv.php" )?>
 
-        <!-- ページ下部バナー -->
-        <?php include( "parts/bnr.php" )?>
-        <!-- end ページ下部バナー -->
+                <?php //お悩みセクション
+                include( "parts/bl_worries/worries.php" )?>
 
-        <!-- footer -->
-        <?php include( "parts/footer.php" )?>
-        <!-- end footer -->
+                <?php //future
+                include( "parts/bl_future/future.php" )?>
+
+                <?php //case study 記事っぽい見た目は別に記事ではないっぽいけど、上のスクロールの部分を押したら切り替わりそう 
+                include( "parts/bl_case/case.php" )?>
+
+                <?php //flow
+                include( "parts/bl_flow/flow.php" )?>
+
+                <?php //faq
+                include( "parts/bl_faq/faq.php" )?>
+
+                <?php //company
+                include( "parts/bl_company/company.php" )?>
+
+            </main><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+            //現在のインデントの個数
+            $indent_level = 3;?>
+
+            <!-- footer -->
+            <?php include( "parts/bl_footer/footer.php" )?>
+            <!-- end footer -->
+        </div><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+            //現在のインデントの個数
+            $indent_level = 2;?>
+
+        <!-- TODO:divでナビゲーション(pc) -->
+        <!-- TODO:divでナビゲーション(pc) -->
     </body>
 </html>
 <?php
 //GETパラメータに"debug"を追加している場合圧縮しない
-if( isset($_GET["debug"]) ){
-    //バッファ終了、改行余計な空白削除して出力
-    $compress = ob_get_clean();
-    $compress = str_replace("\t", '', $compress);
-    $compress = str_replace("\r", '', $compress);
-    $compress = str_replace("\n", '', $compress);
-    $compress = preg_replace('/<!--[\s\S]*?-->/', '', $compress);
-    echo $compress;
+//強制オフ
+if(0){
+    if( isset($_GET["debug"]) ){
+        //バッファ終了、改行余計な空白削除して出力
+        $compress = ob_get_clean();
+        $compress = str_replace("\t", '', $compress);
+        $compress = str_replace("\r", '', $compress);
+        $compress = str_replace("\n", '', $compress);
+        $compress = preg_replace('/<!--[\s\S]*?-->/', '', $compress);
+        echo $compress;
+    }
 }
 ?>

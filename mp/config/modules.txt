@@ -1,3 +1,4 @@
+//php mp/mp.php init
 bl_header/header
 bl_kv/kv
 bl_kv/kv
@@ -6,7 +7,10 @@ bl_cta/cta
 bl_footer/footer
 bl_worries/worries
 bl_future/future
+
 bl_case/case
+bl_case/beforeAfter
+
 bl_post/post
 bl_flow/flow
 bl_faq/faq
