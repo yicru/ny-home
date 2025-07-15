@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP (Module Pallet) Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(214.3 31.8% 91.4%)",
+                        input: "hsl(214.3 31.8% 91.4%)",
+                        ring: "hsl(222.2 84% 4.9%)",
+                        background: "hsl(0 0% 100%)",
+                        foreground: "hsl(222.2 84% 4.9%)",
+                        primary: {
+                            DEFAULT: "hsl(222.2 47.4% 11.2%)",
+                            foreground: "hsl(210 40% 98%)",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(210 40% 96%)",
+                            foreground: "hsl(222.2 84% 4.9%)",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(0 84.2% 60.2%)",
+                            foreground: "hsl(210 40% 98%)",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(210 40% 96%)",
+                            foreground: "hsl(215.4 16.3% 46.9%)",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(210 40% 96%)",
+                            foreground: "hsl(222.2 84% 4.9%)",
+                        },
+                        card: {
+                            DEFAULT: "hsl(0 0% 100%)",
+                            foreground: "hsl(222.2 84% 4.9%)",
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .button {
+            @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+        }
+        .button-primary {
+            @apply bg-blue-600 text-white hover:bg-blue-700 h-10 px-4 py-2;
+        }
+        .button-secondary {
+            @apply bg-gray-600 text-white hover:bg-gray-700 h-10 px-4 py-2;
+        }
+        .button-outline {
+            @apply border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 h-10 px-4 py-2;
+        }
+        .button-success {
+            @apply bg-green-600 text-white hover:bg-green-700 h-10 px-4 py-2;
+        }
+        .button-warning {
+            @apply bg-orange-600 text-white hover:bg-orange-700 h-10 px-4 py-2;
+        }
+        .button-danger {
+            @apply bg-red-600 text-white hover:bg-red-700 h-10 px-4 py-2;
+        }
+        .card {
+            @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+        }
+        .input {
+            @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+        }
+        .textarea {
+            @apply flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+        }
+        .spinner {
+            @apply animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full;
+        }
+        .loading {
+            @apply opacity-50 pointer-events-none;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground">
+    <div class="min-h-screen p-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold tracking-tight">MP (Module Pallet) Tool</h1>
+                <p class="text-muted-foreground mt-2">効率的なPHPプロジェクト開発をサポート</p>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="mb-6">
+                <div class="border-b border-border">
+                    <nav class="-mb-px flex space-x-8">
+                        <button id="tab-init" class="tab-button border-b-2 border-primary text-primary py-2 px-1 text-sm font-medium">
+                            Init (初期化)
+                        </button>
+                        <button id="tab-export" class="tab-button border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-border py-2 px-1 text-sm font-medium">
+                            Export (HTML変換)
+                        </button>
+                        <button id="tab-add" class="tab-button border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-border py-2 px-1 text-sm font-medium">
+                            Add (モジュール追加)
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Init Tab -->
+            <div id="content-init" class="tab-content">
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <!-- Init Actions -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">🔧</span>
+                            プロジェクト初期化
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <button id="btn-init-sample" class="button button-warning w-full">
+                                    <span class="mr-2">📝</span>
+                                    サンプル modules.txt を生成
+                                </button>
+                            </div>
+                            <div>
+                                <button id="btn-init-run" class="button button-success w-full">
+                                    <span class="mr-2">🚀</span>
+                                    初期化実行
+                                </button>
+                            </div>
+                            <div>
+                                <button id="btn-refresh-modules" class="button button-outline w-full">
+                                    <span class="mr-2">🔄</span>
+                                    modules.txt を再読み込み
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current modules.txt -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">📄</span>
+                            現在の modules.txt
+                        </h2>
+                        <div id="modules-content" class="bg-muted p-4 rounded text-sm max-h-64 overflow-auto">
+                            <div class="text-muted-foreground">読み込み中...</div>
+                        </div>
+                        <div class="mt-2 text-xs text-muted-foreground">
+                            ファイル編集は Cursor で行ってください
+                        </div>
+                    </div>
+
+                    <!-- Init Commands -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">💻</span>
+                            コマンドライン
+                        </h2>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php init --sample</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php init --sample">
+                                    📋
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php init</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php init">
+                                    📋
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Area -->
+                <div id="init-result" class="mt-6 card p-6 hidden">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <span class="mr-2">📊</span>
+                        実行結果
+                    </h3>
+                    <pre id="init-output" class="bg-muted p-4 rounded text-sm overflow-auto max-h-64"></pre>
+                </div>
+            </div>
+
+            <!-- Export Tab -->
+            <div id="content-export" class="tab-content hidden">
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <!-- Export Actions -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">🔄</span>
+                            HTML変換
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <button id="btn-export-sample" class="button button-warning w-full">
+                                    <span class="mr-2">📝</span>
+                                    サンプル export-config.json を生成
+                                </button>
+                            </div>
+                            <div>
+                                <button id="btn-export-run" class="button button-primary w-full">
+                                    <span class="mr-2">⚡</span>
+                                    HTML変換実行
+                                </button>
+                            </div>
+                            <div>
+                                <button id="btn-refresh-export" class="button button-outline w-full">
+                                    <span class="mr-2">🔄</span>
+                                    export-config.json を再読み込み
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current export-config.json -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">⚙️</span>
+                            現在の export-config.json
+                        </h2>
+                        <div id="export-config-content" class="bg-muted p-4 rounded text-sm max-h-64 overflow-auto">
+                            <div class="text-muted-foreground">読み込み中...</div>
+                        </div>
+                        <div class="mt-2 text-xs text-muted-foreground">
+                            ファイル編集は Cursor で行ってください
+                        </div>
+                    </div>
+
+                    <!-- Export Commands -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">💻</span>
+                            コマンドライン
+                        </h2>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php export --init</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php export --init">
+                                    📋
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php export</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php export">
+                                    📋
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php export -d dist/</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php export -d dist/">
+                                    📋
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Area -->
+                <div id="export-result" class="mt-6 card p-6 hidden">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <span class="mr-2">📊</span>
+                        実行結果
+                    </h3>
+                    <pre id="export-output" class="bg-muted p-4 rounded text-sm overflow-auto max-h-64"></pre>
+                </div>
+            </div>
+
+            <!-- Add Tab -->
+            <div id="content-add" class="tab-content hidden">
+                <div class="grid gap-6 md:grid-cols-2">
+                    <!-- Add Form -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">➕</span>
+                            モジュール追加
+                        </h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">モジュールパス</label>
+                                <input 
+                                    id="module-path" 
+                                    type="text" 
+                                    class="input" 
+                                    placeholder="bl_news/news-list"
+                                >
+                                <p class="text-sm text-muted-foreground mt-1">形式: モジュール名/ファイル名</p>
+                            </div>
+                            <div>
+                                <button id="btn-add-run" class="button button-success w-full">
+                                    <span class="mr-2">✨</span>
+                                    モジュール追加
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Commands -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4 flex items-center">
+                            <span class="mr-2">💻</span>
+                            コマンドライン
+                        </h2>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php add bl_news/news-list</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php add bl_news/news-list">
+                                    📋
+                                </button>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <code class="flex-1 bg-muted p-2 rounded text-sm">php mp/mp.php add bl_gallery/gallery-single</code>
+                                <button class="copy-btn button button-secondary px-3" data-copy="php mp/mp.php add bl_gallery/gallery-single">
+                                    📋
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Area -->
+                <div id="add-result" class="mt-6 card p-6 hidden">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <span class="mr-2">📊</span>
+                        実行結果
+                    </h3>
+                    <pre id="add-output" class="bg-muted p-4 rounded text-sm overflow-auto max-h-64"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hidden">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab-button');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active state from all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary');
+                    t.classList.add('border-transparent', 'text-muted-foreground');
+                });
+
+                // Add active state to clicked tab
+                tab.classList.add('border-primary', 'text-primary');
+                tab.classList.remove('border-transparent', 'text-muted-foreground');
+
+                // Hide all content
+                contents.forEach(content => content.classList.add('hidden'));
+
+                // Show corresponding content
+                const targetId = 'content-' + tab.id.replace('tab-', '');
+                document.getElementById(targetId).classList.remove('hidden');
+            });
+        });
+
+        // Copy functionality
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.getAttribute('data-copy');
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('コマンドをコピーしました！');
+                });
+            });
+        });
+
+        // Load file content function
+        async function loadFileContent(filename, elementId) {
+            try {
+                const response = await fetch('tool.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'read_file', filename: filename })
+                });
+
+                const data = await response.json();
+                const element = document.getElementById(elementId);
+
+                if (data.success) {
+                    if (data.content) {
+                        element.innerHTML = `<pre class="whitespace-pre-wrap">${escapeHtml(data.content)}</pre>`;
+                    } else {
+                        element.innerHTML = '<div class="text-muted-foreground italic">ファイルが存在しません</div>';
+                    }
+                } else {
+                    element.innerHTML = '<div class="text-red-600">エラー: ' + escapeHtml(data.error) + '</div>';
+                }
+            } catch (error) {
+                document.getElementById(elementId).innerHTML = '<div class="text-red-600">読み込みエラー: ' + escapeHtml(error.message) + '</div>';
+            }
+        }
+
+        // HTML escape function
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Show toast message
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Ajax function to call PHP CLI
+        async function executeCommand(command, outputElementId, resultElementId) {
+            const outputElement = document.getElementById(outputElementId);
+            const resultElement = document.getElementById(resultElementId);
+            const button = event.target;
+
+            // Show loading state
+            button.classList.add('loading');
+            const originalContent = button.innerHTML;
+            button.innerHTML = '<div class="spinner mr-2"></div> 実行中...';
+
+            // Show result area
+            resultElement.classList.remove('hidden');
+            outputElement.textContent = '実行中...';
+
+            try {
+                const response = await fetch('tool.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ command: command })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    outputElement.textContent = data.output;
+                    showToast('コマンドが正常に実行されました！');
+                } else {
+                    outputElement.textContent = 'エラー: ' + data.error;
+                }
+            } catch (error) {
+                outputElement.textContent = 'エラー: ' + error.message;
+            } finally {
+                // Restore button state
+                button.classList.remove('loading');
+                button.innerHTML = originalContent;
+            }
+        }
+
+        // Button event listeners
+        document.getElementById('btn-init-sample').addEventListener('click', () => {
+            executeCommand('init --sample', 'init-output', 'init-result');
+        });
+
+        document.getElementById('btn-init-run').addEventListener('click', () => {
+            executeCommand('init', 'init-output', 'init-result');
+        });
+
+        document.getElementById('btn-refresh-modules').addEventListener('click', () => {
+            loadFileContent('modules.txt', 'modules-content');
+            showToast('modules.txt を再読み込みしました');
+        });
+
+        document.getElementById('btn-export-sample').addEventListener('click', () => {
+            executeCommand('export --init', 'export-output', 'export-result');
+        });
+
+        document.getElementById('btn-export-run').addEventListener('click', () => {
+            executeCommand('export', 'export-output', 'export-result');
+        });
+
+        document.getElementById('btn-refresh-export').addEventListener('click', () => {
+            loadFileContent('export-config.json', 'export-config-content');
+            showToast('export-config.json を再読み込みしました');
+        });
+
+        document.getElementById('btn-add-run').addEventListener('click', () => {
+            const modulePath = document.getElementById('module-path').value.trim();
+            if (!modulePath) {
+                showToast('モジュールパスを入力してください');
+                return;
+            }
+            executeCommand(`add ${modulePath}`, 'add-output', 'add-result');
+        });
+
+        // Load initial file contents
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFileContent('modules.txt', 'modules-content');
+            loadFileContent('export-config.json', 'export-config-content');
+        });
+
+        // Enter key support for module path input
+        document.getElementById('module-path').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('btn-add-run').click();
+            }
+        });
+    </script>
+</body>
+</html>

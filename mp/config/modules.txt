@@ -1,0 +1,15 @@
+bl_header/header
+bl_kv/kv
+bl_kv/kv
+bl_cta/top-kvBottom-cta
+bl_cta/cta
+bl_footer/footer
+bl_worries/worries
+bl_future/future
+bl_case/case
+bl_post/post
+bl_flow/flow
+bl_faq/faq
+bl_company/company
+el_txt/txt
+el_ttl/ttl

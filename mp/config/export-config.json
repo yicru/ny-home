@@ -1,0 +1,9 @@
+{
+    "exports": [
+        {
+            "input": "index.php",
+            "output": "index.html",
+            "params": []
+        }
+    ]
+}
