@@ -14,11 +14,11 @@ $user = [
 ];
 $blog_info = [
     //サイト名
-    'name' => 'サンプルサイト',
+    'name' => '<!-- TODO:サイト名設定 -->',
     //サイトタイトル(トップページのtitleタグに使用されます)
-    'site-title' => 'サンプルタイトル',
+    'site-title' => '<!-- TODO:サイト名設定 -->',
     //デスクリプション
-    'description' => 'サイトの概要',
+    'description' => '<!-- TODO:サイトの概要設定 -->',
     //サイトドメイン、URI(httpから入力)
     'site-url' => 'localhost/htdocs/github/',
     //トップページのurl(httpから入力)
