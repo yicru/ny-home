@@ -543,6 +543,603 @@ class MP
     }
 }
 
+/**
+ * SCSSヘルプを表示
+ */
+function showScssHelp(): void
+{
+    echo "MP SCSS機能 v" . MP_VERSION . "\n";
+    echo "使用方法:\n";
+    echo "  php mp/mp.php scss <command> [options]\n";
+    echo "\n";
+    echo "利用可能なコマンド:\n";
+    echo "【Global色編集】\n";
+    echo "  color <color_value>    色の検索・追加（インタラクティブ）\n";
+    echo "  list                   全色一覧を表示\n";
+    echo "  backup                 バックアップを作成\n";
+    echo "  restore [file]         バックアップから復元\n";
+    echo "\n";
+    echo "【Module生成】\n";
+    echo "  module init            全モジュールのSCSS生成\n";
+    echo "  module update          全モジュールのSCSS更新\n";
+    echo "  module add <module/file> 単一モジュールSCSS生成\n";
+    echo "  module stats           モジュール統計表示\n";
+    echo "\n";
+    echo "例:\n";
+    echo "  php mp/mp.php scss color #FFFFFF\n";
+    echo "  php mp/mp.php scss module init\n";
+    echo "  php mp/mp.php scss module add bl_company/company\n";
+    echo "\n";
+}
+
+/**
+ * 色検索・追加コマンドを処理
+ */
+function handleColorCommand(string $colorValue, array $options): int
+{
+    try {
+        require_once __DIR__ . '/scss/color.php';
+        $manager = new SCSSColorManager();
+
+        // 既存色を検索
+        $existing = $manager->searchByColor($colorValue);
+        $similar = $manager->findSimilarColors($colorValue, 50);
+
+        echo "=== 色検索結果: {$colorValue} ===\n\n";
+
+        if (!empty($existing)) {
+            echo "✓ この色は既に登録されています:\n";
+            foreach ($existing as $color) {
+                echo "  • {$color['variable']}: {$color['value']}";
+                if (!empty($color['comment'])) {
+                    echo " ({$color['comment']})";
+                }
+                echo " [{$manager->getCategories()[$color['category']]}]\n";
+            }
+            echo "\n";
+        }
+
+        if (!empty($similar)) {
+            echo "📎 類似色:\n";
+            $displayCount = min(3, count($similar));
+            for ($i = 0; $i < $displayCount; $i++) {
+                $color = $similar[$i];
+                echo "  • {$color['variable']}: {$color['value']} (差: {$color['distance']})\n";
+            }
+            echo "\n";
+        }
+
+        if (empty($existing)) {
+            echo "ℹ️  この色は登録されていません。\n\n";
+        }
+
+        // バックアップのみの場合は終了
+        if (isset($options['backup-only'])) {
+            return 0;
+        }
+
+        // インタラクティブメニュー
+        echo "次の操作を選択してください:\n";
+        echo "1) この色をコピー用に表示して終了\n";
+        echo "2) この色を新規追加\n";
+        if (!empty($existing)) {
+            echo "3) 既存の色を編集\n";
+            echo "4) 既存の色を削除\n";
+        }
+        echo "0) キャンセル\n";
+        echo "選択: ";
+
+        $choice = trim(fgets(STDIN));
+
+        switch ($choice) {
+            case '1':
+                return handleCopyDisplay($colorValue, $existing);
+
+            case '2':
+                return handleAddColor($manager, $colorValue);
+
+            case '3':
+                if (!empty($existing)) {
+                    return handleEditColor($manager, $existing);
+                }
+                break;
+
+            case '4':
+                if (!empty($existing)) {
+                    return handleDeleteColor($manager, $existing);
+                }
+                break;
+
+            case '0':
+                echo "キャンセルしました。\n";
+                return 0;
+        }
+
+        return 0;
+
+    } catch (Exception $e) {
+        echo "エラー: {$e->getMessage()}\n";
+        return 1;
+    }
+}
+
+/**
+ * コピー表示処理
+ */
+function handleCopyDisplay(string $colorValue, array $existing): int
+{
+    echo "\n=== コピー用表示 ===\n";
+
+    if (!empty($existing)) {
+        echo "既存の色変数:\n";
+        foreach ($existing as $color) {
+            echo "{$color['variable']}\n";
+        }
+    }
+
+    echo "色値: {$colorValue}\n";
+    return 0;
+}
+
+/**
+ * 色追加処理
+ */
+function handleAddColor(SCSSColorManager $manager, string $colorValue): int
+{
+    $categories = $manager->getCategories();
+
+    echo "\nカテゴリーを選択してください:\n";
+    $categoryKeys = array_keys($categories);
+    for ($i = 0; $i < count($categoryKeys); $i++) {
+        $key = $categoryKeys[$i];
+        echo ($i + 1) . ") {$categories[$key]}\n";
+    }
+    echo "選択 (1-" . count($categories) . "): ";
+
+    $categoryChoice = trim(fgets(STDIN));
+    $categoryIndex = (int)$categoryChoice - 1;
+
+    if ($categoryIndex < 0 || $categoryIndex >= count($categoryKeys)) {
+        echo "無効な選択です。\n";
+        return 1;
+    }
+
+    $selectedCategory = $categoryKeys[$categoryIndex];
+
+    echo "\n色名を入力してください:\n";
+    $suggestions = $manager->generateColorName($colorValue);
+    echo "自動生成候補: " . implode(', ', $suggestions) . "\n";
+    echo "色名 (空欄で自動生成): ";
+
+    $colorName = trim(fgets(STDIN));
+
+    if (empty($colorName)) {
+        $colorName = $suggestions[0];
+    }
+
+    // カテゴリープレフィックスを追加
+    $prefixes = [
+        'background' => 'bg-',
+        'border' => 'border-',
+        'font' => 'font-',
+        'hover' => 'img-hover-', // 既存に合わせる
+        'shadow' => 'shadow-'
+    ];
+
+    $fullName = $prefixes[$selectedCategory] . $colorName;
+
+    // 重複チェック
+    if ($manager->checkDuplicate($selectedCategory, $fullName)) {
+        $fullName = $manager->generateNumberedName($selectedCategory, $fullName);
+        echo "重複のため色名を変更: {$fullName}\n";
+    }
+
+    echo "コメントを入力してください (任意): ";
+    $comment = trim(fgets(STDIN));
+
+    // 追加実行
+    if ($manager->addColor($selectedCategory, $fullName, $colorValue, $comment)) {
+        echo "\n✓ --color-{$fullName}: {$colorValue} を追加しました\n";
+        if (!empty($comment)) {
+            echo "  コメント: {$comment}\n";
+        }
+        return 0;
+    } else {
+        echo "\n✗ 色の追加に失敗しました\n";
+        return 1;
+    }
+}
+
+/**
+ * 色編集処理
+ */
+function handleEditColor(SCSSColorManager $manager, array $existing): int
+{
+    if (count($existing) > 1) {
+        echo "\n編集する色を選択してください:\n";
+        for ($i = 0; $i < count($existing); $i++) {
+            $color = $existing[$i];
+            echo ($i + 1) . ") {$color['variable']}: {$color['value']}\n";
+        }
+        echo "選択: ";
+
+        $choice = trim(fgets(STDIN));
+        $index = (int)$choice - 1;
+
+        if ($index < 0 || $index >= count($existing)) {
+            echo "無効な選択です。\n";
+            return 1;
+        }
+
+        $targetColor = $existing[$index];
+    } else {
+        $targetColor = $existing[0];
+    }
+
+    echo "\n現在の設定:\n";
+    echo "色名: {$targetColor['name']}\n";
+    echo "色値: {$targetColor['value']}\n";
+    echo "コメント: {$targetColor['comment']}\n";
+
+    echo "\n新しい色値 (空欄で変更なし): ";
+    $newValue = trim(fgets(STDIN));
+    if (empty($newValue)) {
+        $newValue = $targetColor['value'];
+    }
+
+    echo "新しいコメント (空欄で変更なし): ";
+    $newComment = trim(fgets(STDIN));
+    if (empty($newComment)) {
+        $newComment = $targetColor['comment'];
+    }
+
+    if ($manager->updateColor($targetColor['name'], $targetColor['name'], $newValue, $newComment)) {
+        echo "\n✓ 色を更新しました\n";
+        return 0;
+    } else {
+        echo "\n✗ 色の更新に失敗しました\n";
+        return 1;
+    }
+}
+
+/**
+ * 色削除処理
+ */
+function handleDeleteColor(SCSSColorManager $manager, array $existing): int
+{
+    if (count($existing) > 1) {
+        echo "\n削除する色を選択してください:\n";
+        for ($i = 0; $i < count($existing); $i++) {
+            $color = $existing[$i];
+            echo ($i + 1) . ") {$color['variable']}: {$color['value']}\n";
+        }
+        echo "選択: ";
+
+        $choice = trim(fgets(STDIN));
+        $index = (int)$choice - 1;
+
+        if ($index < 0 || $index >= count($existing)) {
+            echo "無効な選択です。\n";
+            return 1;
+        }
+
+        $targetColor = $existing[$index];
+    } else {
+        $targetColor = $existing[0];
+    }
+
+    echo "\n本当に削除しますか？\n";
+    echo "対象: {$targetColor['variable']}: {$targetColor['value']}\n";
+    echo "削除 (y/N): ";
+
+    $confirm = trim(fgets(STDIN));
+    if (strtolower($confirm) !== 'y') {
+        echo "キャンセルしました。\n";
+        return 0;
+    }
+
+    if ($manager->deleteColor($targetColor['name'])) {
+        echo "\n✓ 色を削除しました\n";
+        return 0;
+    } else {
+        echo "\n✗ 色の削除に失敗しました\n";
+        return 1;
+    }
+}
+
+/**
+ * モジュールコマンドを処理
+ */
+function handleModuleCommand(array $args, array $options): int
+{
+    if (empty($args)) {
+        echo "エラー: moduleサブコマンドを指定してください\n";
+        echo "使用方法:\n";
+        echo "  php mp/mp.php scss module init\n";
+        echo "  php mp/mp.php scss module update\n";
+        echo "  php mp/mp.php scss module add <module/file>\n";
+        echo "  php mp/mp.php scss module stats\n";
+        exit(1);
+    }
+
+    try {
+        require_once __DIR__ . '/scss/module.php';
+        $generator = new SCSSModuleGenerator();
+
+        $subCommand = $args[0];
+        $subArgs = array_slice($args, 1);
+
+        switch ($subCommand) {
+            case 'init':
+                echo "SCSS Module生成開始...\n";
+                $results = $generator->generateAll(false);
+
+                foreach ($results['details'] as $detail) {
+                    echo $detail . "\n";
+                }
+
+                echo str_repeat("-", 50) . "\n";
+                echo "生成完了: {$results['created']}作成, {$results['skipped']}スキップ, {$results['errors']}エラー\n";
+                return $results['errors'] > 0 ? 1 : 0;
+
+            case 'update':
+                echo "SCSS Module更新開始...\n";
+                $results = $generator->generateAll(true);
+
+                foreach ($results['details'] as $detail) {
+                    echo $detail . "\n";
+                }
+
+                echo str_repeat("-", 50) . "\n";
+                echo "更新完了: {$results['created']}作成/更新, {$results['errors']}エラー\n";
+                return $results['errors'] > 0 ? 1 : 0;
+
+            case 'add':
+                if (empty($subArgs)) {
+                    echo "エラー: module/file を指定してください\n";
+                    echo "使用例: php mp/mp.php scss module add bl_company/company\n";
+                    return 1;
+                }
+
+                $modulePath = $subArgs[0];
+                if (strpos($modulePath, '/') === false) {
+                    echo "エラー: module/file 形式で指定してください\n";
+                    return 1;
+                }
+
+                list($moduleName, $fileName) = explode('/', $modulePath, 2);
+
+                echo "SCSS Module追加: {$moduleName}/{$fileName}\n";
+                $result = $generator->generateSingle($moduleName, $fileName, false);
+
+                if ($result['created']) {
+                    echo "✓ 成功: {$moduleName}/_" . $fileName . ".scss を作成しました\n";
+                    return 0;
+                } elseif ($result['skipped']) {
+                    echo "- スキップ: 既存 - {$moduleName}/_" . $fileName . ".scss\n";
+                    return 0;
+                }
+                return 1;
+
+            case 'stats':
+                $stats = $generator->getModuleStats();
+
+                echo "=== Module統計 ===\n";
+                echo "総モジュール数: {$stats['total_modules']}\n";
+                echo "総ファイル数: {$stats['total_files']}\n";
+                echo "ブロックモジュール: {$stats['block_modules']}\n";
+                echo "エレメントモジュール: {$stats['element_modules']}\n\n";
+
+                if (!empty($stats['modules'])) {
+                    foreach ($stats['modules'] as $moduleName => $moduleInfo) {
+                        $typeLabel = $moduleInfo['type'] === 'block' ? 'Block' : 'Element';
+                        echo "{$moduleName} ({$typeLabel}) - {$moduleInfo['total']}ファイル\n";
+                        foreach ($moduleInfo['files'] as $file) {
+                            echo "  • {$file}.php\n";
+                        }
+                        echo "\n";
+                    }
+                } else {
+                    echo "モジュールが見つかりません。\n";
+                }
+                return 0;
+
+            default:
+                echo "エラー: 不明なmoduleサブコマンド '{$subCommand}'\n";
+                return 1;
+        }
+
+    } catch (Exception $e) {
+        echo "エラー: {$e->getMessage()}\n";
+        return 1;
+    }
+}
+
+/**
+ * 一覧表示コマンドを処理
+ */
+function handleListCommand(): int
+{
+    try {
+        require_once __DIR__ . '/scss/color.php';
+        $manager = new SCSSColorManager();
+
+        $colorsByCategory = $manager->getColorsByCategory();
+        $categories = $manager->getCategories();
+
+        echo "=== SCSS 色変数一覧 ===\n\n";
+
+        foreach ($categories as $key => $label) {
+            if (empty($colorsByCategory[$key])) {
+                continue;
+            }
+
+            echo "📂 {$label} (" . count($colorsByCategory[$key]) . ")\n";
+            echo str_repeat("-", 50) . "\n";
+
+            foreach ($colorsByCategory[$key] as $color) {
+                echo "  • {$color['variable']}: {$color['value']}";
+                if (!empty($color['comment'])) {
+                    echo " // {$color['comment']}";
+                }
+                echo "\n";
+            }
+            echo "\n";
+        }
+
+        $totalColors = count($manager->getAllColors());
+        echo "合計: {$totalColors} 色\n";
+
+        return 0;
+
+    } catch (Exception $e) {
+        echo "エラー: {$e->getMessage()}\n";
+        return 1;
+    }
+}
+
+/**
+ * バックアップコマンドを処理
+ */
+function handleBackupCommand(): int
+{
+    try {
+        require_once __DIR__ . '/scss/color.php';
+        $manager = new SCSSColorManager();
+
+        $backupFile = $manager->createBackup();
+        echo "✓ バックアップを作成しました: " . basename($backupFile) . "\n";
+
+        return 0;
+
+    } catch (Exception $e) {
+        echo "エラー: {$e->getMessage()}\n";
+        return 1;
+    }
+}
+
+/**
+ * バックアップ一覧表示
+ */
+function handleListBackupsCommand(): int
+{
+    $backupDir = __DIR__ . '/backup/color/';
+
+    if (!is_dir($backupDir)) {
+        echo "バックアップディレクトリが存在しません。\n";
+        return 1;
+    }
+
+    $files = glob($backupDir . '*_color.scss');
+
+    if (empty($files)) {
+        echo "バックアップファイルが見つかりません。\n";
+        return 0;
+    }
+
+    // ファイル名でソート（新しい順）
+    usort($files, function($a, $b) {
+        return filemtime($b) <=> filemtime($a);
+    });
+
+    echo "=== バックアップファイル一覧 ===\n\n";
+
+    foreach ($files as $index => $file) {
+        $filename = basename($file);
+        $timestamp = date('Y-m-d H:i:s', filemtime($file));
+        $size = round(filesize($file) / 1024, 1);
+
+        echo ($index + 1) . ") {$filename}\n";
+        echo "   作成日時: {$timestamp}\n";
+        echo "   サイズ: {$size} KB\n\n";
+    }
+
+    echo "復元するには: php mp/mp.php scss restore <filename>\n";
+
+    return 0;
+}
+
+/**
+ * バックアップ復元コマンドを処理
+ */
+function handleRestoreCommand(string $filename): int
+{
+    try {
+        require_once __DIR__ . '/scss/color.php';
+
+        $backupDir = __DIR__ . '/backup/color/';
+        $backupFile = $backupDir . $filename;
+
+        if (!file_exists($backupFile)) {
+            echo "バックアップファイルが見つかりません: {$filename}\n";
+            return 1;
+        }
+
+        $scssFile = __DIR__ . '/../scss/global/_color.scss';
+
+        echo "復元対象: {$filename}\n";
+        echo "復元先: " . basename($scssFile) . "\n";
+        echo "本当に復元しますか？現在のファイルは上書きされます。(y/N): ";
+
+        $confirm = trim(fgets(STDIN));
+        if (strtolower($confirm) !== 'y') {
+            echo "キャンセルしました。\n";
+            return 0;
+        }
+
+        // 現在のファイルをバックアップしてから復元
+        $manager = new SCSSColorManager();
+        $currentBackup = $manager->createBackup();
+        echo "現在のファイルをバックアップ: " . basename($currentBackup) . "\n";
+
+        if (copy($backupFile, $scssFile)) {
+            echo "✓ バックアップから復元しました\n";
+            return 0;
+        } else {
+            echo "✗ 復元に失敗しました\n";
+            return 1;
+        }
+
+    } catch (Exception $e) {
+        echo "エラー: {$e->getMessage()}\n";
+        return 1;
+    }
+}
+
+/**
+ * 対話的な入力を読み取り（Windows対応）
+ */
+function readInput(string $prompt): string
+{
+    echo $prompt;
+    return trim(fgets(STDIN));
+}
+
+/**
+ * カラー出力（対応ターミナルのみ）
+ */
+function colorOutput(string $text, string $color = 'default'): string
+{
+    $colors = [
+        'red' => "\033[31m",
+        'green' => "\033[32m",
+        'yellow' => "\033[33m",
+        'blue' => "\033[34m",
+        'magenta' => "\033[35m",
+        'cyan' => "\033[36m",
+        'white' => "\033[37m",
+        'reset' => "\033[0m"
+    ];
+
+    if (!isset($colors[$color])) {
+        return $text;
+    }
+
+    return $colors[$color] . $text . $colors['reset'];
+}
+
+
+
 // ===== メイン処理 =====
 
 $argc = count($argv);
@@ -632,9 +1229,54 @@ switch ($command) {
         MP::showVersion();
         exit(0);
 
+    case 'scss':
+        $parsed = MP::parseArgs($args, ['help', 'backup-only']);
+        $options = $parsed['options'];
+        $positional = $parsed['positional'];
+
+        if (isset($options['help']) || empty($positional)) {
+            showScssHelp();
+            exit(0);
+        }
+
+        $subCommand = $positional[0];
+        $subArgs = array_slice($positional, 1);
+
+        switch ($subCommand) {
+            case 'color':
+                if (empty($subArgs)) {
+                    echo "エラー: 色値を指定してください\n";
+                    echo "使用例: php mp/mp.php scss color #FFFFFF\n";
+                    exit(1);
+                }
+                exit(handleColorCommand($subArgs[0], $options));
+
+            case 'list':
+                exit(handleListCommand());
+
+            case 'backup':
+                exit(handleBackupCommand());
+
+            case 'restore':
+                if (empty($subArgs)) {
+                    exit(handleListBackupsCommand());
+                }
+                exit(handleRestoreCommand($subArgs[0]));
+
+            case 'module':
+                exit(handleModuleCommand($subArgs, $options));
+
+            default:
+                echo "エラー: 不明なサブコマンド '{$subCommand}'\n\n";
+                showScssHelp();
+                exit(1);
+        }
+
     default:
         echo "エラー: 不明なコマンド '{$command}'\n\n";
         MP::showMainHelp();
         exit(1);
 }
+
+
 ?>

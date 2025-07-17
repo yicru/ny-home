@@ -81,6 +81,35 @@
         .loading {
             @apply opacity-50 pointer-events-none;
         }
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: background-color 0.2s;
+            min-height: 80px; /* 最小高さを指定 */
+        }
+
+        .color-item:hover {
+            background-color: #f9fafb;
+        }
+
+        /* カラーボックスのサイズを固定 */
+        .color-item .w-12.h-12 {
+            flex-shrink: 0; /* サイズ固定 */
+        }
+
+        /* テキストエリアを適切に配置 */
+        .color-item .flex-1 {
+            min-width: 0; /* テキストが長い場合の省略対応 */
+        }
+
+        /* ボタンエリアを右端に固定 */
+        .color-item .flex.items-center.gap-2 {
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="bg-background text-foreground">
@@ -88,8 +117,8 @@
         <div class="max-w-6xl mx-auto">
             <!-- Header -->
             <div class="mb-8">
-                <h1 class="text-3xl font-bold tracking-tight">MP (Module Pallet) Tool</h1>
-                <p class="text-muted-foreground mt-2">効率的なPHPプロジェクト開発をサポート</p>
+                <h1 class="text-3xl font-bold tracking-tight">MPツール</h1>
+                <p class="text-muted-foreground mt-2">効率的なPHPプロジェクト開発をサポート for もちさん</p>
             </div>
 
             <!-- Navigation Tabs -->
@@ -104,6 +133,12 @@
                         </button>
                         <button id="tab-add" class="tab-button border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-border py-2 px-1 text-sm font-medium">
                             Add (モジュール追加)
+                        </button>
+                        <button id="tab-scss" class="tab-button border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-border py-2 px-1 text-sm font-medium">
+                            SCSS Global編集
+                        </button>
+                        <button id="tab-scss-module" class="tab-button border-b-2 border-transparent text-muted-foreground hover:text-foreground hover:border-border py-2 px-1 text-sm font-medium">
+                            PHPからSCSS作成
                         </button>
                     </nav>
                 </div>
@@ -332,6 +367,271 @@
                     <pre id="add-output" class="bg-muted p-4 rounded text-sm overflow-auto max-h-64"></pre>
                 </div>
             </div>
+
+            <div id="content-scss" class="tab-content hidden">
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <!-- 左カラム: 色検索・追加 -->
+                    <div class="lg:col-span-1">
+                        <div class="card p-6 mb-6">
+                            <h2 class="text-lg font-semibold mb-4 flex items-center">
+                                <span class="mr-2">🎨</span>
+                                色の検索・追加
+                            </h2>
+
+                            <!-- 色入力 -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium mb-2">色値</label>
+                                <input 
+                                    id="scss-color-input" 
+                                    type="text" 
+                                    class="input" 
+                                    placeholder="#FFFFFF または #FFFFFF80"
+                                >
+                                <button id="scss-search-btn" class="button button-primary w-full mt-2">
+                                    <span class="mr-2">🔍</span>
+                                    検索
+                                </button>
+                            </div>
+
+                            <!-- リアルタイム検索結果 -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium mb-2">検索結果</label>
+                                <div id="scss-search-results" class="grid grid-cols-5 gap-2 text-xs">
+                                    <div class="text-center" data-category="background">
+                                        <div class="text-gray-500 mb-2 font-medium">background</div>
+                                        <div class="w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded">none</div>
+                                        <button class="copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed">none</button>
+                                    </div>
+
+                                    <div class="text-center" data-category="border">
+                                        <div class="text-gray-500 mb-2 font-medium">border</div>
+                                        <div class="w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded">none</div>
+                                        <button class="copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed">none</button>
+                                    </div>
+
+                                    <div class="text-center" data-category="font">
+                                        <div class="text-gray-500 mb-2 font-medium">font</div>
+                                        <div class="w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded">none</div>
+                                        <button class="copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed">none</button>
+                                    </div>
+
+                                    <div class="text-center" data-category="hover">
+                                        <div class="text-gray-500 mb-2 font-medium">hover</div>
+                                        <div class="w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded">none</div>
+                                        <button class="copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed">none</button>
+                                    </div>
+
+                                    <div class="text-center" data-category="shadow">
+                                        <div class="text-gray-500 mb-2 font-medium">shadow</div>
+                                        <div class="w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded">none</div>
+                                        <button class="copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed">none</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 新規追加フォーム -->
+                            <div class="border-t pt-4">
+                                <h3 class="text-sm font-medium mb-3">新規追加</h3>
+                                <div class="space-y-3">
+                                    <div>
+                                        <select id="scss-category-select" class="input">
+                                            <option value="">カテゴリーを選択</option>
+                                            <option value="background">background color</option>
+                                            <option value="border">border color</option>
+                                            <option value="font">font color</option>
+                                            <option value="hover">hover color</option>
+                                            <option value="shadow">shadow color</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input 
+                                            id="scss-custom-name"
+                                            type="text" 
+                                            class="input" 
+                                            placeholder="色名（空欄で自動生成）"
+                                        >
+                                        <div class="text-xs text-gray-500 mt-1">自動生成候補: <span id="scss-name-suggestions">-</span></div>
+                                    </div>
+                                    <div>
+                                        <input 
+                                            id="scss-comment"
+                                            type="text" 
+                                            class="input" 
+                                            placeholder="コメント（任意）"
+                                        >
+                                    </div>
+                                    <button id="scss-add-btn" class="button button-primary w-full">
+                                        <span class="mr-2">➕</span>
+                                        色を追加
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="card p-6 mb-6">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                <span class="mr-2">⚙️</span>
+                                アクション
+                            </h3>
+                            <div class="space-y-3">
+                                <button id="scss-backup-btn" class="button button-warning w-full">
+                                    <span class="mr-2">💾</span>
+                                    バックアップ作成
+                                </button>
+                                <button id="scss-reload-btn" class="button button-outline w-full">
+                                    <span class="mr-2">🔄</span>
+                                    ファイル再読み込み
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CLIコマンド -->
+                        <div class="card p-4">
+                            <h3 class="text-sm font-semibold mb-2 flex items-center">
+                                <span class="mr-2">💻</span>
+                                CLIコマンド
+                            </h3>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss color #FFFFFF</code>
+                                    <button class="copy-btn">📋</button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss list</code>
+                                    <button class="copy-btn">📋</button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss backup</code>
+                                    <button class="copy-btn">📋</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右カラム: 色一覧 -->
+                    <div class="lg:col-span-2">
+                        <div id="scss-colors-container">
+                            <!-- 色一覧がここに動的に読み込まれます -->
+                            <div class="text-center py-8 text-gray-500">
+                                色データを読み込み中...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCSS結果エリア -->
+                <div id="scss-result" class="mt-6 card p-6 hidden">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <span class="mr-2">📊</span>
+                        実行結果
+                    </h3>
+                    <pre id="scss-output" class="bg-muted p-4 rounded text-sm overflow-auto max-h-64"></pre>
+                </div>
+            </div>
+            <!-- SCSS Module Tab -->
+            <div id="content-scss-module" class="tab-content hidden">
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <!-- 左カラム: アクション -->
+                    <div class="lg:col-span-1">
+                        <div class="card p-6 mb-6">
+                            <h2 class="text-lg font-semibold mb-4 flex items-center">
+                                <span class="mr-2">🔧</span>
+                                SCSS Module生成
+                            </h2>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <button id="scss-module-init-btn" class="button button-primary w-full">
+                                        <span class="mr-2">🚀</span>
+                                        全モジュール初期化
+                                    </button>
+                                </div>
+                                <div>
+                                    <button id="scss-module-update-btn" class="button button-warning w-full">
+                                        <span class="mr-2">🔄</span>
+                                        全モジュール更新
+                                    </button>
+                                </div>
+                                <div>
+                                    <button id="scss-module-stats-btn" class="button button-outline w-full">
+                                        <span class="mr-2">📊</span>
+                                        統計を表示
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 単一モジュール追加 -->
+                        <div class="card p-6 mb-6">
+                            <h3 class="text-lg font-semibold mb-4 flex items-center">
+                                <span class="mr-2">➕</span>
+                                単一モジュール追加
+                            </h3>
+                            <div class="space-y-3">
+                                <div>
+                                    <input 
+                                        id="scss-module-path" 
+                                        type="text" 
+                                        class="input" 
+                                        placeholder="bl_company/company"
+                                    >
+                                    <p class="text-sm text-muted-foreground mt-1">形式: モジュール名/ファイル名</p>
+                                </div>
+                                <button id="scss-module-add-btn" class="button button-success w-full">
+                                    <span class="mr-2">✨</span>
+                                    SCSS生成
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CLIコマンド -->
+                        <div class="card p-4">
+                            <h3 class="text-sm font-semibold mb-2 flex items-center">
+                                <span class="mr-2">💻</span>
+                                CLIコマンド
+                            </h3>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss module init</code>
+                                    <button class="copy-btn" data-copy="php mp/mp.php scss module init">📋</button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss module update</code>
+                                    <button class="copy-btn" data-copy="php mp/mp.php scss module update">📋</button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss module add bl_company/company</code>
+                                    <button class="copy-btn" data-copy="php mp/mp.php scss module add bl_company/company">📋</button>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 bg-gray-100 p-1 rounded">php mp/mp.php scss module stats</code>
+                                    <button class="copy-btn" data-copy="php mp/mp.php scss module stats">📋</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右カラム: モジュール一覧・統計 -->
+                    <div class="lg:col-span-2">
+                        <div id="scss-module-content">
+                            <!-- モジュール統計・一覧がここに動的に読み込まれます -->
+                            <div class="text-center py-8 text-gray-500">
+                                統計ボタンを押してモジュール情報を読み込んでください
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCSS Module結果エリア -->
+                <div id="scss-module-result" class="mt-6 card p-6 hidden">
+                    <h3 class="text-lg font-semibold mb-3 flex items-center">
+                        <span class="mr-2">📊</span>
+                        実行結果
+                    </h3>
+                    <pre id="scss-module-output" class="bg-muted p-4 rounded text-sm overflow-auto max-h-64"></pre>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -512,5 +812,753 @@
             }
         });
     </script>
+    <!-- SCSS専用JavaScript -->
+<script>
+    // SCSS Color管理用のJavaScript
+    let scssCurrentColors = {};
+    let scssSearchTimeout = null;
+
+    // SCSS色データをロード
+    async function loadScssColors() {
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ action: 'scss_list_colors' })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                scssCurrentColors = data.data;
+                renderScssColors(data.data);
+                showToast(`色データを読み込みました (${data.total}色)`);
+            } else {
+                document.getElementById('scss-colors-container').innerHTML = 
+                    '<div class="text-red-600 text-center py-8">エラー: ' + escapeHtml(data.error) + '</div>';
+            }
+        } catch (error) {
+            document.getElementById('scss-colors-container').innerHTML = 
+                '<div class="text-red-600 text-center py-8">読み込みエラー: ' + escapeHtml(error.message) + '</div>';
+        }
+    }
+
+    // 色一覧をレンダリング
+    function renderScssColors(colorData) {
+        const container = document.getElementById('scss-colors-container');
+        let html = '';
+
+        const categoryIcons = {
+            'background': '🖼️',
+            'border': '🔲',
+            'font': '📝',
+            'hover': '👆',
+            'shadow': '🌫️'
+        };
+
+        for (const [category, info] of Object.entries(colorData)) {
+            const colors = info.colors || [];
+            const icon = categoryIcons[category] || '🎨';
+
+            html += `
+                <div class="category-section">
+                    <h2 class="text-lg font-semibold mb-4 mt-4 flex items-center">
+                        <span class="mr-2">${icon}</span>
+                        ${info.label}
+                        <span class="ml-2 text-sm text-gray-500">(${colors.length})</span>
+                    </h2>
+            `;
+
+            if (colors.length === 0) {
+                html += `
+                    <div class="text-gray-500 text-center py-8 border-2 border-dashed border-gray-200 rounded-lg">
+                        ${info.label}は登録されていません
+                    </div>
+                `;
+            } else {
+                html += '<div class="grid gap-3">';
+
+                for (const color of colors) {
+                    const colorBox = createColorBox(color.value);
+                    const alphaInfo = getAlphaInfo(color.value);
+
+                    html += `
+                        <div class="color-item" data-color-name="${color.name}">
+                            ${colorBox}
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <button class="copy-btn font-mono text-sm font-semibold" data-copy="${color.variable}">
+                                        ${color.variable}
+                                    </button>
+                                    <button class="copy-btn font-mono" data-copy="${color.value}">
+                                        ${color.value}
+                                    </button>
+                                    ${alphaInfo}
+                                </div>
+                                ${color.comment ? `<div class="comment-text">${escapeHtml(color.comment)}</div>` : ''}
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button class="text-gray-400 hover:text-blue-500 text-lg edit-color-btn" 
+                                        data-color-name="${color.name}" 
+                                        data-color-value="${color.value}"
+                                        data-color-comment="${color.comment || ''}"
+                                        title="編集">✏️</button>
+                                <button class="text-gray-400 hover:text-red-500 text-lg delete-color-btn" 
+                                        data-color-name="${color.name}"
+                                        title="削除">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                html += '</div>';
+            }
+
+            html += '</div>';
+        }
+
+        container.innerHTML = html;
+
+        // イベントリスナーを追加
+        addScssColorEventListeners();
+    }
+
+    // カラーボックスのHTMLを作成
+    function createColorBox(colorValue) {
+        if (colorValue === 'unset' || colorValue === 'transparent') {
+            return `<div class="w-12 h-12 rounded border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-500 text-xs shadow-sm" title="${colorValue}">${colorValue}</div>`;
+        }
+
+        if (hasAlpha(colorValue)) {
+            return `
+                <div class="w-12 h-12 rounded border border-gray-300 shadow-sm relative" 
+                     style="background: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%); background-size: 8px 8px; background-position: 0 0, 0 4px, 4px -4px, -4px 0px;"
+                     title="${colorValue}">
+                    <div class="w-full h-full rounded" style="background-color: ${colorValue};"></div>
+                </div>
+            `;
+        }
+
+        return `<div class="w-12 h-12 rounded border border-gray-300 shadow-sm" style="background-color: ${colorValue};" title="${colorValue}"></div>`;
+    }
+
+    // アルファ値情報を取得
+    function getAlphaInfo(colorValue) {
+        if (!hasAlpha(colorValue)) return '';
+
+        const alpha = getAlphaValue(colorValue);
+        const percentage = Math.round(alpha * 100);
+
+        return `<span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Alpha: ${percentage}%</span>`;
+    }
+
+    // アルファ値があるかチェック
+    function hasAlpha(colorValue) {
+        return colorValue.length === 9 && colorValue.startsWith('#');
+    }
+
+    // アルファ値を取得（0-1）
+    function getAlphaValue(colorValue) {
+        if (!hasAlpha(colorValue)) return 1;
+
+        const alphaHex = colorValue.slice(7, 9);
+        return parseInt(alphaHex, 16) / 255;
+    }
+
+    // 色イベントリスナーを追加
+    function addScssColorEventListeners() {
+        // コピーボタン
+        document.querySelectorAll('.copy-btn[data-copy]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.getAttribute('data-copy');
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(`コピーしました: ${text}`);
+                });
+            });
+        });
+
+        // 編集ボタン
+        document.querySelectorAll('.edit-color-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const name = btn.getAttribute('data-color-name');
+                const value = btn.getAttribute('data-color-value');
+                const comment = btn.getAttribute('data-color-comment');
+
+                editScssColor(name, value, comment);
+            });
+        });
+
+        // 削除ボタン
+        document.querySelectorAll('.delete-color-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const name = btn.getAttribute('data-color-name');
+                deleteScssColor(name);
+            });
+        });
+    }
+
+    // 色検索
+    async function searchScssColor(colorValue) {
+        if (!colorValue.trim()) {
+            resetSearchResults();
+            return;
+        }
+
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    action: 'scss_search_color',
+                    color_value: colorValue
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                updateSearchResults(data.data);
+                updateNameSuggestions(data.data.suggestions);
+            } else {
+                showToast('検索エラー: ' + data.error);
+            }
+        } catch (error) {
+            showToast('検索エラー: ' + error.message);
+        }
+    }
+
+    // 検索結果を更新
+    function updateSearchResults(searchData) {
+        const container = document.getElementById('scss-search-results');
+        const categories = ['background', 'border', 'font', 'hover', 'shadow'];
+
+        categories.forEach(category => {
+            const categoryDiv = container.querySelector(`[data-category="${category}"]`);
+            const colorBox = categoryDiv.querySelector('div:nth-child(2)');
+            const button = categoryDiv.querySelector('button');
+
+            const status = searchData.category_status[category];
+
+            if (status.exists && status.colors.length > 0) {
+                const color = status.colors[0];
+                colorBox.className = 'w-12 h-12 mx-auto rounded border border-gray-300 shadow-sm';
+                colorBox.style.background = `${color.value}`;
+                colorBox.textContent = '';
+                colorBox.title = `${color.variable}: ${color.value}`;
+
+                button.className = 'copy-btn mt-2 w-full';
+                button.textContent = color.variable;
+                button.setAttribute('data-copy', color.variable);
+                button.disabled = false;
+            } else {
+                colorBox.className = 'w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded';
+                colorBox.style.background = '';
+                colorBox.textContent = 'none';
+                colorBox.title = '';
+
+                button.className = 'copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed';
+                button.textContent = 'none';
+                button.removeAttribute('data-copy');
+                button.disabled = true;
+            }
+        });
+    }
+
+    // 検索結果をリセット
+    function resetSearchResults() {
+        const container = document.getElementById('scss-search-results');
+        const categories = ['background', 'border', 'font', 'hover', 'shadow'];
+
+        categories.forEach(category => {
+            const categoryDiv = container.querySelector(`[data-category="${category}"]`);
+            const colorBox = categoryDiv.querySelector('div:nth-child(2)');
+            const button = categoryDiv.querySelector('button');
+
+            colorBox.className = 'w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded';
+            colorBox.style.background = '';
+            colorBox.textContent = 'none';
+
+            button.className = 'copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed';
+            button.textContent = 'none';
+            button.disabled = true;
+        });
+    }
+
+    // 色名候補を更新
+    function updateNameSuggestions(suggestions) {
+        const suggestionsSpan = document.getElementById('scss-name-suggestions');
+        suggestionsSpan.textContent = suggestions.join(', ');
+    }
+
+    // 色を追加
+    async function addScssColor() {
+        const colorValue = document.getElementById('scss-color-input').value.trim();
+        const category = document.getElementById('scss-category-select').value;
+        const customName = document.getElementById('scss-custom-name').value.trim();
+        const comment = document.getElementById('scss-comment').value.trim();
+
+        if (!colorValue) {
+            showToast('色値を入力してください');
+            return;
+        }
+
+        if (!category) {
+            showToast('カテゴリーを選択してください');
+            return;
+        }
+
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'scss_add_color',
+                    category: category,
+                    color_value: colorValue,
+                    custom_name: customName,
+                    comment: comment
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showToast(`色を追加しました: ${data.data.variable_name}`);
+
+                // フォームをクリア
+                document.getElementById('scss-color-input').value = '';
+                document.getElementById('scss-category-select').value = '';
+                document.getElementById('scss-custom-name').value = '';
+                document.getElementById('scss-comment').value = '';
+
+                // 色一覧を再読み込み
+                loadScssColors();
+                resetSearchResults();
+            } else {
+                showToast('エラー: ' + data.error);
+            }
+        } catch (error) {
+            showToast('追加エラー: ' + error.message);
+        }
+    }
+
+    // 色を編集
+    function editScssColor(name, currentValue, currentComment) {
+        const newValue = prompt(`新しい色値を入力してください\n現在値: ${currentValue}`, currentValue);
+        if (newValue === null) return;
+
+        const newComment = prompt(`新しいコメントを入力してください\n現在値: ${currentComment}`, currentComment);
+        if (newComment === null) return;
+
+        updateScssColor(name, name, newValue, newComment);
+    }
+
+    // 色を更新
+    async function updateScssColor(oldName, newName, colorValue, comment) {
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'scss_update_color',
+                    old_name: oldName,
+                    new_name: newName,
+                    color_value: colorValue,
+                    comment: comment
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showToast(`色を更新しました: ${data.data.variable_name}`);
+                loadScssColors();
+            } else {
+                showToast('エラー: ' + data.error);
+            }
+        } catch (error) {
+            showToast('更新エラー: ' + error.message);
+        }
+    }
+
+    // 色を削除
+    async function deleteScssColor(name) {
+        if (!confirm(`本当に削除しますか？\n--color-${name}`)) {
+            return;
+        }
+
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'scss_delete_color',
+                    name: name
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showToast(`色を削除しました: --color-${name}`);
+                loadScssColors();
+            } else {
+                showToast('エラー: ' + data.error);
+            }
+        } catch (error) {
+            showToast('削除エラー: ' + error.message);
+        }
+    }
+
+    // バックアップ作成
+    async function createScssBackup() {
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ action: 'scss_backup' })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                showToast(`バックアップを作成しました: ${data.data.backup_file}`);
+            } else {
+                showToast('エラー: ' + data.error);
+            }
+        } catch (error) {
+            showToast('バックアップエラー: ' + error.message);
+        }
+    }
+
+    // SCSS関連のイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', () => {
+        // SCSS色入力のリアルタイム検索
+        const scssColorInput = document.getElementById('scss-color-input');
+        scssColorInput.addEventListener('input', (e) => {
+            clearTimeout(scssSearchTimeout);
+            scssSearchTimeout = setTimeout(() => {
+                searchScssColor(e.target.value);
+            }, 300);
+        });
+
+        // SCSS検索ボタン
+        document.getElementById('scss-search-btn').addEventListener('click', () => {
+            const colorValue = document.getElementById('scss-color-input').value;
+            searchScssColor(colorValue);
+        });
+
+        // SCSS色追加ボタン
+        document.getElementById('scss-add-btn').addEventListener('click', addScssColor);
+
+        // SCSSバックアップボタン
+        document.getElementById('scss-backup-btn').addEventListener('click', createScssBackup);
+
+        // SCSS再読み込みボタン
+        document.getElementById('scss-reload-btn').addEventListener('click', () => {
+            loadScssColors();
+            showToast('色データを再読み込みしました');
+        });
+
+        // SCSSタブが表示されたときに色データをロード
+        document.getElementById('tab-scss').addEventListener('click', () => {
+            setTimeout(() => {
+                if (!document.getElementById('content-scss').classList.contains('hidden')) {
+                    loadScssColors();
+                }
+            }, 100);
+        });
+    });
+</script>
+<!-- SCSS Module専用JavaScript -->
+<script>
+    // SCSS Module機能用のJavaScript
+    let scssModuleStats = null;
+
+    // SCSS Module統計をロード
+    async function loadScssModuleStats() {
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ action: 'scss_module_stats' })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                scssModuleStats = data.data;
+                renderScssModuleStats(data.data);
+                showToast(`モジュール統計を読み込みました (${data.data.total_modules}モジュール)`);
+            } else {
+                document.getElementById('scss-module-content').innerHTML = 
+                    '<div class="text-red-600 text-center py-8">エラー: ' + escapeHtml(data.error) + '</div>';
+            }
+        } catch (error) {
+            document.getElementById('scss-module-content').innerHTML = 
+                '<div class="text-red-600 text-center py-8">読み込みエラー: ' + escapeHtml(error.message) + '</div>';
+        }
+    }
+
+    // モジュール統計をレンダリング
+    function renderScssModuleStats(stats) {
+        const container = document.getElementById('scss-module-content');
+        
+        let html = `
+            <div class="card p-6 mb-6">
+                <h2 class="text-lg font-semibold mb-4 flex items-center">
+                    <span class="mr-2">📊</span>
+                    モジュール統計
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-blue-600">${stats.total_modules}</div>
+                        <div class="text-sm text-gray-500">総モジュール数</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-600">${stats.total_files}</div>
+                        <div class="text-sm text-gray-500">総ファイル数</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-purple-600">${stats.block_modules}</div>
+                        <div class="text-sm text-gray-500">ブロック</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-orange-600">${stats.element_modules}</div>
+                        <div class="text-sm text-gray-500">エレメント</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        if (Object.keys(stats.modules).length === 0) {
+            html += `
+                <div class="text-center py-8 text-gray-500 border-2 border-dashed border-gray-200 rounded-lg">
+                    モジュールが見つかりません<br>
+                    <small>parts/bl_* または parts/el_* ディレクトリを確認してください</small>
+                </div>
+            `;
+        } else {
+            html += `
+                <div class="card p-6">
+                    <h2 class="text-lg font-semibold mb-4 flex items-center">
+                        <span class="mr-2">📁</span>
+                        モジュール一覧
+                    </h2>
+                    <div class="space-y-4">
+            `;
+
+            for (const [moduleName, moduleInfo] of Object.entries(stats.modules)) {
+                const typeIcon = moduleInfo.type === 'block' ? '🧱' : '🔧';
+                const typeLabel = moduleInfo.type === 'block' ? 'Block' : 'Element';
+                const typeColor = moduleInfo.type === 'block' ? 'text-purple-600' : 'text-orange-600';
+
+                html += `
+                    <div class="border rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center">
+                                <span class="mr-2">${typeIcon}</span>
+                                <span class="font-semibold">${moduleName}</span>
+                                <span class="ml-2 text-sm ${typeColor}">${typeLabel}</span>
+                            </div>
+                            <span class="text-sm text-gray-500">${moduleInfo.total}ファイル</span>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                `;
+
+                moduleInfo.files.forEach(file => {
+                    html += `
+                        <div class="text-sm bg-gray-100 px-2 py-1 rounded flex items-center justify-between">
+                            <span>${file}.php</span>
+                            <button class="scss-module-single-btn text-blue-500 hover:text-blue-700 text-xs" 
+                                    data-module="${moduleName}" 
+                                    data-file="${file}"
+                                    title="この単一ファイルのSCSS生成">
+                                ⚡
+                            </button>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `
+                    </div>
+                </div>
+            `;
+        }
+
+        container.innerHTML = html;
+
+        // 単一ファイル生成ボタンのイベントリスナー追加
+        document.querySelectorAll('.scss-module-single-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const module = btn.getAttribute('data-module');
+                const file = btn.getAttribute('data-file');
+                generateSingleScssModule(`${module}/${file}`);
+            });
+        });
+    }
+
+    // SCSS Module初期化
+    async function initScssModules() {
+        await executeScssModuleAction('scss_module_init', '全モジュール初期化');
+    }
+
+    // SCSS Module更新
+    async function updateScssModules() {
+        await executeScssModuleAction('scss_module_update', '全モジュール更新');
+    }
+
+    // 単一SCSS Module生成
+    async function generateSingleScssModule(modulePath) {
+        const resultElement = document.getElementById('scss-module-result');
+        const outputElement = document.getElementById('scss-module-output');
+
+        // 結果エリアを表示
+        resultElement.classList.remove('hidden');
+        outputElement.textContent = '実行中...';
+
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    action: 'scss_module_add',
+                    module_path: modulePath
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                outputElement.textContent = data.data.message;
+                showToast(`${data.data.status === 'created' ? '作成' : 'スキップ'}: ${data.data.scss_file}`);
+            } else {
+                outputElement.textContent = 'エラー: ' + data.error;
+                showToast('エラー: ' + data.error);
+            }
+        } catch (error) {
+            outputElement.textContent = 'エラー: ' + error.message;
+            showToast('実行エラー: ' + error.message);
+        }
+    }
+
+    // SCSS Moduleアクション実行
+    async function executeScssModuleAction(action, actionName) {
+        const resultElement = document.getElementById('scss-module-result');
+        const outputElement = document.getElementById('scss-module-output');
+
+        // 結果エリアを表示
+        resultElement.classList.remove('hidden');
+        outputElement.textContent = '実行中...';
+
+        try {
+            const response = await fetch('tool.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ action: action })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                const result = data.data;
+                let output = `${actionName}完了\n`;
+                output += `総数: ${result.total}, 作成: ${result.created}, スキップ: ${result.skipped}, エラー: ${result.errors}\n\n`;
+                
+                if (result.details && result.details.length > 0) {
+                    output += "詳細:\n" + result.details.join('\n');
+                }
+
+                outputElement.textContent = output;
+                showToast(`${actionName}完了: ${result.created}作成, ${result.skipped}スキップ`);
+
+                // 統計を再読み込み
+                if (scssModuleStats) {
+                    loadScssModuleStats();
+                }
+            } else {
+                outputElement.textContent = 'エラー: ' + data.error;
+                showToast('エラー: ' + data.error);
+            }
+        } catch (error) {
+            outputElement.textContent = 'エラー: ' + error.message;
+            showToast('実行エラー: ' + error.message);
+        }
+    }
+
+    // SCSS Module関連のイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', () => {
+        // 統計表示ボタン
+        document.getElementById('scss-module-stats-btn').addEventListener('click', () => {
+            loadScssModuleStats();
+        });
+
+        // 初期化ボタン
+        document.getElementById('scss-module-init-btn').addEventListener('click', () => {
+            if (confirm('全モジュールのSCSSを初期化しますか？\n既存ファイルはスキップされます。')) {
+                initScssModules();
+            }
+        });
+
+        // 更新ボタン
+        document.getElementById('scss-module-update-btn').addEventListener('click', () => {
+            if (confirm('全モジュールのSCSSを更新しますか？\n既存ファイルも上書きされます。')) {
+                updateScssModules();
+            }
+        });
+
+        // 単一モジュール追加ボタン
+        document.getElementById('scss-module-add-btn').addEventListener('click', () => {
+            const modulePath = document.getElementById('scss-module-path').value.trim();
+            if (!modulePath) {
+                showToast('モジュールパスを入力してください');
+                return;
+            }
+            generateSingleScssModule(modulePath);
+        });
+
+        // Enter key support
+        document.getElementById('scss-module-path').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('scss-module-add-btn').click();
+            }
+        });
+
+        // SCSS Moduleタブが表示されたときに統計をロード
+        document.getElementById('tab-scss-module').addEventListener('click', () => {
+            setTimeout(() => {
+                if (!document.getElementById('content-scss-module').classList.contains('hidden')) {
+                    if (!scssModuleStats) {
+                        loadScssModuleStats();
+                    }
+                }
+            }, 100);
+        });
+    });
+</script>
 </body>
 </html>
