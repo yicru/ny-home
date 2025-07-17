@@ -1,0 +1,156 @@
+@use "../../global/" as g;
+
+/* ブロックモジュール */
+.ly_kv {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_txtGroup {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_txtGroup_group {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//文章
+.bl_kv_txtGroup_group_txt {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_txtGroup_group_txt_lv2 {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_txtGroup_group2 {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//文章
+.bl_kv_txtGroup_group2_txt {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_txtGroup_group2_txt_lv2 {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_txtGroup_group2_txt_lv3 {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_badgeList {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_badgeList_item {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//画像
+.bl_kv_badgeList_item_img {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_kv_workerImg {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//画像
+.bl_kv_workerImg_img {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}

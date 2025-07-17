@@ -1,0 +1,84 @@
+@use "../../global/" as g;
+
+/* ブロックモジュール */
+.bl_footer {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_footer_inner {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_footer_nav {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//リスト
+.bl_footer_nav_list {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_footer_nav_item {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_footer_nav_item_link {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_footer_copy {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//文章
+.bl_footer_copy_txt {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}

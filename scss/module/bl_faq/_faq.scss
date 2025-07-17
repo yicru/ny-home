@@ -1,0 +1,136 @@
+@use "../../global/" as g;
+
+/* ブロックモジュール */
+.bl_faq {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faq_inner {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faq_header {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faq_header_badge {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//タイトル
+.bl_faq_header_ttl {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//リスト
+.bl_faq_list {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faqCard {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faqCard_question {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faqCard_question_iconWrap {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faqCard_question_icon {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//タイトル
+.bl_faqCard_question_ttl {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_faqCard_answer {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//文章
+.bl_faqCard_answer_txt {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}

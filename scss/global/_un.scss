@@ -1,0 +1,78 @@
+@use "breakpoint" as g;
+
+// 通常の視覚的に非表示にするためのクラス（スクリーンリーダーでは読める）
+.un_hide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+//ただ非表示にするモディファイアです、単体で使用してください。un_hideと併用するものではありません。
+
+//onlyはそれだけ非表示、notはそれ以外非表示(notSpだったら、onlyTab and onlyPcの範囲となる)
+//スマホ以降で非表示、実質全て表示しないのと同じ
+.un_hide__sp,
+.un_hide__123 {
+    display: none !important;
+}
+//スマホだけ非表示
+.un_hide__onlySp,
+.un_hide__1 {
+    @include g.mq("onlySp") {
+        display: none !important;
+    }
+}
+//スマホ以外非表示(スマホだけ表示)
+/*
+.un_hide__notSp,
+.un_hide__23 {
+    @include g.mq("notSp") {
+        display: none !important;
+    }
+}
+//tab以降で非表示と同じ意味なので省略
+*/
+
+//tab以降で非表示
+.un_hide__tab,
+.un_hide__notSp,
+.un_hide__23 {
+    @include g.mq("tab") {
+        display: none !important;
+    }
+}
+//タブレットだけ表示、その他非表示
+.un_hide__notTab,
+.un_hide__13 {
+    @include g.mq("notTab") {
+        display: none !important;
+    }
+}
+//タブレットのみ非表示
+.un_hide__onlyTab
+.un_hide__2 {
+    @include g.mq("onlyTab") {
+        display: none !important;
+    }
+}
+//pc以降で非表示
+.un_hide__pc,
+.un_hide__onlyPc,
+.un_hide__3 {
+    @include g.mq("pc") {
+        display: none !important;
+    }
+}
+//PCだけ表示、その他非表示
+.un_hide__notPc,
+.un_hide__12 {
+    @include g.mq("notPc") {
+        display: none !important;
+    }
+}

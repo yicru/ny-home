@@ -1,0 +1,176 @@
+@use "../../global/" as g;
+
+/* ブロックモジュール */
+.bl_flow {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_inner {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_header {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_header_badge {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//タイトル
+.bl_flow_header_ttl {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//リスト
+.bl_flow_list {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_icon {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//タイトル
+.bl_flow_item_content_ttl {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content_body {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+//文章
+.bl_flow_item_content_body_txt {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content_body_btnGroup {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content_body_btnGroup_btn {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content_body_btnGroup_btn__line {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content_body_btnGroup_btn__phone {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}
+
+.bl_flow_item_content_body_btnGroup_btn_time {
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+
+}

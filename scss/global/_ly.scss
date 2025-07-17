@@ -1,0 +1,21 @@
+@use "breakpoint" as g;
+
+//ブロックモジュールとセットで使うものはブロックモジュール側に書くly_header等
+//モジュールファイル側に分類できないものはここに記述
+
+//例
+//記事エリア、記事一覧エリアのレイアウトに使用
+/*
+.ly_cont {
+    width: 91.4%;
+    margin: 40px auto 0;
+    @include g.mq('tab') {
+        //tab
+    }
+    @include g.mq('pc') {
+        //左右余白は50pxにする
+        width: 92.3%;
+        max-width: 1200px;
+    }
+}
+*/

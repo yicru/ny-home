@@ -1,0 +1,21 @@
+@use "sass:map";
+
+/* モバイルファースト */
+$breakpoints: (
+    "500": "screen and (min-width: 500px)",
+    "tab": "screen and (min-width: 768px)",  // 〜767pxまでがSPの想定
+    "pc": "screen and (min-width: 1080px)",  // 1080px以上がPCの想定
+    "notPc": "screen and (max-width: 1079.5px)",  // PC以外（SP+TAB）1090の時の挙動が求めてたものでない為.5で調整
+    "notTab": "screen and (max-width: 767px), screen and (min-width: 1080px)",  // タブレット以外（SP+PC）
+    "notSp": "screen and (min-width: 768px)",  // スマホ以外（TAB+PC）
+    "onlySp": "screen and (max-width: 767px)",  // スマホのみ
+    "onlyTab": "screen and (min-width: 768px) and (max-width: 1079px)",  // タブレットのみ
+    "onlyPc": "screen and (min-width: 1080px)",  // PCのみ pcと同じ意味ではあるが、同じようなルールで
+);
+
+/* メディアクエリミックスイン */
+@mixin mq($breakpoint: tab) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}

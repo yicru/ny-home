@@ -1,0 +1,26 @@
+@use "breakpoint" as g;
+
+/* ベーススタイル(global) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+span {
+    display:block;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+//TODO:ベースの文字のカラー、スタイルを設定する。
+body {
+    line-height: 1.75;
+    font-size: 14px;
+    color: var(--color-font-base);
+    font-family: var(--font-family-base);
+    position: relative;
+    @include g.mq('tab') {
+        font-size: 16px;
+    }
+}
