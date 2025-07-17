@@ -1,1 +1,23 @@
 .idea
+
+# node_modulesフォルダを無視
+node_modules/
+
+# mp/backupフォルダを無視
+mp/backup
+
+# 拡張子の無視
+*.mp
+.htaccess
+*.mdp
+*.log
+
+# packageを無視
+package-lock.json
+package.json
+
+## sample_moduleフォルダをすべて無視（どの階層にあっても）
+sample_module/
+
+## scssのmapを無視
+*.css.map
