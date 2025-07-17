@@ -2,6 +2,11 @@
     "exports": [
         {
             "input": "index.php",
+            "output": "html/index.html",
+            "params": []
+        },
+        {
+            "input": "index.php",
             "output": "index.html",
             "params": []
         }
