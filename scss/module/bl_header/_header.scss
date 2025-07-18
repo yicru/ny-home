@@ -2,6 +2,8 @@
 
 /* ブロックモジュール */
 .bl_header {
+    height: 60px;
+    width: 100%;
     @include g.mq('tab') {
 
     }
@@ -12,6 +14,10 @@
 }
 
 .bl_header_inner {
+    display: flex;
+    padding-right: 16px;
+    justify-content: space-between;
+    align-items: center;
     @include g.mq('tab') {
 
     }
@@ -32,6 +38,11 @@
 }
 
 .bl_header_logoWrap_link {
+    width: 60px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     @include g.mq('tab') {
 
     }
