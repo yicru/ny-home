@@ -164,7 +164,7 @@ class SCSSColorManager
     /**
      * 色値を正規化（大文字小文字、#の有無を統一）
      */
-    private function normalizeColor(string $color): string
+    public function normalizeColor(string $color): string
     {
         $color = strtolower(trim($color));
         if (!str_starts_with($color, '#') && $color !== 'unset' && $color !== 'transparent') {
@@ -474,6 +474,12 @@ class SCSSColorManager
 
     private function isValidHexColor(string $color): bool
     {
+        // 空文字チェック
+        if (empty(trim($color))) {
+            return false;
+        }
+
+        // 基本的な16進数カラーチェック
         return preg_match('/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[A-Fa-f0-9]{8})$/', $color);
     }
 
@@ -481,15 +487,26 @@ class SCSSColorManager
     {
         $hex = ltrim($hex, '#');
 
+        // 長さチェック
+        if (!in_array(strlen($hex), [3, 6, 8])) {
+            throw new Exception("Invalid hex color length: $hex");
+        }
+
         if (strlen($hex) === 3) {
             $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
         }
 
-        return [
-            hexdec(substr($hex, 0, 2)),
-            hexdec(substr($hex, 2, 2)),
-            hexdec(substr($hex, 4, 2))
-        ];
+        // 16進数変換の安全化
+        $r = hexdec(substr($hex, 0, 2));
+        $g = hexdec(substr($hex, 2, 2));
+        $b = hexdec(substr($hex, 4, 2));
+
+        // 値の範囲チェック
+        if ($r < 0 || $r > 255 || $g < 0 || $g > 255 || $b < 0 || $b > 255) {
+            throw new Exception("Invalid RGB values: $r, $g, $b");
+        }
+
+        return [$r, $g, $b];
     }
 
     private function hexToHsl(string $hex): array
@@ -574,4 +591,5 @@ if (php_sapi_name() === 'cli' && isset($argv) && basename($argv[0]) === 'color.p
         echo "色名候補: " . implode(', ', $suggestions) . "\n";
     }
 }
+
 ?>

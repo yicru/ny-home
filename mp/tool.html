@@ -110,6 +110,19 @@
         .color-item .flex.items-center.gap-2 {
             flex-shrink: 0;
         }
+        /* カラーボックスのホバー効果を追加 */
+        .color-box-clickable {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .color-box-clickable:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-box-clickable:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body class="bg-background text-foreground">
@@ -384,7 +397,7 @@
                                 <input 
                                     id="scss-color-input" 
                                     type="text" 
-                                    class="input" 
+                                    class="input w-full" 
                                     placeholder="#FFFFFF または #FFFFFF80"
                                 >
                                 <button id="scss-search-btn" class="button button-primary w-full mt-2">
@@ -428,6 +441,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-xs text-gray-400 mt-1 mb-3">クリックでコピー</div>
 
                             <!-- 新規追加フォーム -->
                             <div class="border-t pt-4">
@@ -447,7 +461,7 @@
                                         <input 
                                             id="scss-custom-name"
                                             type="text" 
-                                            class="input" 
+                                            class="input w-full" 
                                             placeholder="色名（空欄で自動生成）"
                                         >
                                         <div class="text-xs text-gray-500 mt-1">自動生成候補: <span id="scss-name-suggestions">-</span></div>
@@ -456,7 +470,7 @@
                                         <input 
                                             id="scss-comment"
                                             type="text" 
-                                            class="input" 
+                                            class="input w-full" 
                                             placeholder="コメント（任意）"
                                         >
                                     </div>
@@ -1045,25 +1059,48 @@
 
             if (status.exists && status.colors.length > 0) {
                 const color = status.colors[0];
-                colorBox.className = 'w-12 h-12 mx-auto rounded border border-gray-300 shadow-sm';
+                colorBox.className = 'w-12 h-12 mx-auto rounded border border-gray-300 shadow-sm cursor-pointer';
                 colorBox.style.background = `${color.value}`;
                 colorBox.textContent = '';
-                colorBox.title = `${color.variable}: ${color.value}`;
+                colorBox.title = `クリックでコピー: ${color.variable}`;
+
+                // カラーボックスにクリックイベントを追加
+                colorBox.onclick = function() {
+                    navigator.clipboard.writeText(color.variable).then(() => {
+                        showToast(`コピーしました: ${color.variable}`);
+
+                        // 視覚的フィードバック
+                        const originalBorder = colorBox.style.border;
+                        colorBox.style.border = '2px solid #28a745';
+                        setTimeout(() => {
+                            colorBox.style.border = originalBorder;
+                        }, 500);
+                    });
+                };
 
                 button.className = 'copy-btn mt-2 w-full';
                 button.textContent = color.variable;
                 button.setAttribute('data-copy', color.variable);
                 button.disabled = false;
+
+                // ボタンにもクリックイベントを追加（既存機能の強化）
+                button.onclick = function() {
+                    navigator.clipboard.writeText(color.variable).then(() => {
+                        showToast(`コピーしました: ${color.variable}`);
+                    });
+                };
             } else {
                 colorBox.className = 'w-12 h-12 mx-auto bg-gray-200 flex items-center justify-center text-gray-400 text-xs border-2 border-dashed rounded';
                 colorBox.style.background = '';
                 colorBox.textContent = 'none';
                 colorBox.title = '';
+                colorBox.onclick = null; // クリックイベントを削除
 
                 button.className = 'copy-btn mt-2 w-full bg-gray-200 cursor-not-allowed';
                 button.textContent = 'none';
                 button.removeAttribute('data-copy');
                 button.disabled = true;
+                button.onclick = null; // クリックイベントを削除
             }
         });
     }

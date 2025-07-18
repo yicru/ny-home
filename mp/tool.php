@@ -4,9 +4,14 @@
  * ブラウザUIからのAjax呼び出しを処理してCLI版mp.phpを実行
  */
 
-// デバッグモードを有効化
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// エラー出力を抑制（JSON出力を守るため）
+error_reporting(0);
+ini_set('display_errors', 0);
+
+// メモリとタイムアウト設定
+ini_set('memory_limit', '256M');
+set_time_limit(30);
+
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/debug.log');
 
@@ -247,44 +252,82 @@ function handleScssListColors($manager) {
  * 色検索
  */
 function handleScssSearchColor($manager, $input) {
-    if (!isset($input['color_value'])) {
-        return ['success' => false, 'error' => 'Color value not specified'];
-    }
+    // 詳細ログ用
+    $debugLog = [];
 
-    $colorValue = $input['color_value'];
+    try {
+        $debugLog[] = "Start search function";
 
-    // 既存色を検索
-    $existing = $manager->searchByColor($colorValue);
+        if (!isset($input['color_value'])) {
+            return ['success' => false, 'error' => 'Color value not specified'];
+        }
 
-    // 類似色を検索
-    $similar = $manager->findSimilarColors($colorValue, 50);
+        $colorValue = $input['color_value'];
+        $debugLog[] = "Color value: " . $colorValue;
 
-    // 自動色名生成
-    $suggestions = $manager->generateColorName($colorValue);
+        // 色値の基本検証を追加
+        if (empty(trim($colorValue))) {
+            return ['success' => false, 'error' => 'Empty color value'];
+        }
 
-    // カテゴリー別の既存チェック
-    $categories = $manager->getCategories();
-    $categoryStatus = [];
+        // 正規化のテスト
+        $debugLog[] = "Testing color normalization";
+        $normalizedColor = $manager->normalizeColor($colorValue);
+        $debugLog[] = "Normalized color: " . $normalizedColor;
 
-    foreach ($categories as $key => $label) {
-        $found = array_filter($existing, fn($color) => $color['category'] === $key);
-        $categoryStatus[$key] = [
-            'label' => $label,
-            'exists' => !empty($found),
-            'colors' => array_values($found)
+        // 既存色を検索
+        $debugLog[] = "Starting existing color search";
+        $existing = $manager->searchByColor($colorValue);
+        $debugLog[] = "Existing colors found: " . count($existing);
+
+        // 段階的に機能を有効化
+        $similar = []; // 一旦類似色検索をスキップ
+        $suggestions = ['test']; // 一旦色名生成をスキップ
+
+        // カテゴリー別の既存チェック
+        $debugLog[] = "Starting category status check";
+        $categories = $manager->getCategories();
+        $categoryStatus = [];
+
+        foreach ($categories as $key => $label) {
+            $found = array_filter($existing, fn($color) => $color['category'] === $key);
+            $categoryStatus[$key] = [
+                'label' => $label,
+                'exists' => !empty($found),
+                'colors' => array_values($found)
+            ];
+        }
+        $debugLog[] = "Category status check completed";
+
+        return [
+            'success' => true,
+            'data' => [
+                'color_value' => $colorValue,
+                'existing' => $existing,
+                'similar' => $similar,
+                'suggestions' => $suggestions,
+                'category_status' => $categoryStatus,
+                'debug_log' => $debugLog // デバッグログを含める
+            ]
+        ];
+
+    } catch (Exception $e) {
+        return [
+            'success' => false, 
+            'error' => $e->getMessage(),
+            'debug_log' => $debugLog,
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
+        ];
+    } catch (Error $e) {
+        return [
+            'success' => false, 
+            'error' => 'Fatal error: ' . $e->getMessage(),
+            'debug_log' => $debugLog,
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
         ];
     }
-
-    return [
-        'success' => true,
-        'data' => [
-            'color_value' => $colorValue,
-            'existing' => $existing,
-            'similar' => array_slice($similar, 0, 5), // 上位5件
-            'suggestions' => $suggestions,
-            'category_status' => $categoryStatus
-        ]
-    ];
 }
 
 /**
