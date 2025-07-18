@@ -92,9 +92,8 @@ if( !isset($_GET["debug"]) ){
             //現在のインデントの個数
             $indent_level = 3;?>
 
-            <!-- footer -->
-            <?php include( "parts/bl_footer/footer.php" )?>
-            <!-- end footer -->
+            <?php //footer
+            include( "parts/bl_footer/footer.php" )?>
         </div><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
             //現在のインデントの個数
             $indent_level = 2;?>
