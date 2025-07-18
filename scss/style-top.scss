@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+// グローバル設定
+@use "global";
+
+// 共通モジュール
+@use "page/common";
+
+// トップページ固有
+@use "page/top";

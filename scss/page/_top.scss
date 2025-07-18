@@ -1,0 +1,16 @@
+// トップページで使用するモジュール
+@use "../module/bl_header/header";
+@use "../module/bl_kv/kv";
+@use "../module/bl_cta/top-kvBottom-cta";
+@use "../module/bl_cta/cta";
+@use "../module/bl_footer/footer";
+@use "../module/bl_worries/worries";
+@use "../module/bl_future/future";
+@use "../module/bl_case/case";
+@use "../module/bl_case/beforeAfter";
+@use "../module/bl_post/post";
+@use "../module/bl_flow/flow";
+@use "../module/bl_faq/faq";
+@use "../module/bl_company/company";
+@use "../module/el_txt/txt";
+@use "../module/el_ttl/ttl";

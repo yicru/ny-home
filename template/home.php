@@ -46,7 +46,7 @@ if( !isset($_GET["debug"]) ){
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
 
         <!-- css共通 -->
-        <link rel="stylesheet" href="css/style-index.css">
+        <link rel="stylesheet" href="css/style-top.css">
 
         <!-- css-ページ用<?php //<link rel="stylesheet" href="css/index.css">?> -->
     </head>
