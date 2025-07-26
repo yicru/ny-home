@@ -24,20 +24,20 @@ auto_indent_start();
         <!-- バッジリスト -->
         <div class="bl_kv_badgeList">
             <div class="bl_kv_badgeList_item">
-                <img src="img/badge.png" alt="お客様負担一切なし！" width="120" height="118" class="bl_kv_badgeList_item_img">
+                <img src="/img/kv-badge.png" alt="お客様負担一切なし！" width="120" height="118" class="bl_kv_badgeList_item_img">
             </div>
             <div class="bl_kv_badgeList_item">
-                <img src="img/badge2.png" alt="申請から工事まで一貫サポート" width="120" height="118" class="bl_kv_badgeList_item_img">
+                <img src="/img/kv-badge2.png" alt="申請から工事まで一貫サポート" width="120" height="118" class="bl_kv_badgeList_item_img">
             </div>
             <div class="bl_kv_badgeList_item">
-                <img src="img/badge3.png" alt="豊富な経験・実績で確実な受給" width="120" height="118" class="bl_kv_badgeList_item_img">
+                <img src="/img/kv-badge3.png" alt="豊富な経験・実績で確実な受給" width="120" height="118" class="bl_kv_badgeList_item_img">
             </div>
         </div>
         <!-- end バッジリスト -->
 
         <!-- 作業員イラスト -->
         <div class="bl_kv_workerImg">
-            <img src="img/workers.png" alt="作業員イラスト" width="" height="" class="bl_kv_workerImg_img">
+            <img src="/img/kv-illust.png" alt="作業員イラスト" width="" height="" class="bl_kv_workerImg_img">
             <!-- TODO:img width height設定 -->
         </div>
         <!-- end 作業員イラスト -->

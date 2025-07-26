@@ -9,7 +9,7 @@ auto_indent_start();
         <div class="bl_header_logoWrap">
             <a href="/" class="bl_header_logoWrap_link">
                 <span class="un_hide">NYHOME</span>
-                <img src="img/logo.svg" alt="NYHOME" width="" height="" class="bl_header_logoWrap_logo">
+                <img src="/img/header-logo.jpg" alt="NYHOME" width="100" height="25" class="bl_header_logoWrap_logo">
             </a>
         </div>
         <!-- end ロゴ -->

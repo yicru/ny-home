@@ -2,6 +2,10 @@
 
 /* ブロックモジュール */
 .bl_future {
+    background-image: url("../img/future-bg.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: top center;
     @include g.mq('tab') {
 
     }

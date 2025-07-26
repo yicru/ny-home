@@ -2,6 +2,10 @@
 
 /* ブロックモジュール */
 .ly_kv {
+    background-image: url("../img/kv-bg.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: top center;
     @include g.mq('tab') {
 
     }

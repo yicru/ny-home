@@ -6,7 +6,7 @@ auto_indent_start();
 <section class="bl_faq">
     <div class="bl_faq_inner">
         <div class="bl_faq_header">
-            <div class="bl_faq_header_badge">FAQ</div>
+            <div class="el_ttlHeader">FAQ</div>
             <h2 class="bl_faq_header_ttl">よくあるご質問</h2>
         </div>
 
@@ -15,7 +15,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">工場や店舗でも火災保険の保証は対応していますか？</h3>
                 </div>
@@ -32,7 +32,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">火災保険申請を行うと、保険料はあがりますか？</h3>
                 </div>
@@ -48,7 +48,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">災害被害はどこまでが保険対象範囲ですか？</h3>
                 </div>
@@ -64,7 +64,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">窓ガラスの割れた理由がわからない場合、保証は適応されますか？</h3>
                 </div>
@@ -80,7 +80,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">調査費用はかかりますか？</h3>
                 </div>
@@ -96,7 +96,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">受け取った保険金は必ず修繕に使わないといけませんか？</h3>
                 </div>
@@ -112,7 +112,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">いつまでの災害なら申請できますか？</h3>
                 </div>
@@ -128,7 +128,7 @@ auto_indent_start();
             <li class="bl_faqCard">
                 <div class="bl_faqCard_question">
                     <div class="bl_faqCard_question_iconWrap">
-                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
+                        <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
                     </div>
                     <h3 class="bl_faqCard_question_ttl">過去に申請したことがありますが、再度申請できますか？</h3>
                 </div>

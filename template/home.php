@@ -98,6 +98,7 @@ if( !isset($_GET["debug"]) ){
             //現在のインデントの個数
             $indent_level = 2;?>
 
+        <!-- TODO:footerしたのリンクを設定 -->
         <!-- TODO:divでナビゲーション(pc) -->
         <!-- TODO:divでナビゲーション(pc) -->
     </body>

@@ -12,6 +12,10 @@
 }
 
 .bl_worries_group {
+    background-image: url("../img/worries-bg.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: top center;
     @include g.mq('tab') {
 
     }
@@ -115,6 +119,10 @@
 }
 
 .bl_worries_group2 {
+    background-image: url("../img/worries-bg2.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: top center;
     @include g.mq('tab') {
 
     }
