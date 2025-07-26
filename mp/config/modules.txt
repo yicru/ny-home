@@ -15,5 +15,10 @@ bl_post/post
 bl_flow/flow
 bl_faq/faq
 bl_company/company
+
+//elもphp partが生成されてしまう
 el_txt/txt
 el_ttl/ttl
+
+//flowとかCASE STUDYとか
+el_ttlHeader/ttlHeader

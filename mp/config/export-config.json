@@ -2,7 +2,7 @@
     "exports": [
         {
             "input": "index.php",
-            "output": "html/index.html",
+            "output": "index.html",
             "params": []
         }
     ]
