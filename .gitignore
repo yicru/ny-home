@@ -21,3 +21,6 @@ sample_module/
 
 ## scssのmapを無視
 *.css.map
+
+## min.cssを無視
+*min.css
