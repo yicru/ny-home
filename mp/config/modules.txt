@@ -22,3 +22,5 @@ el_ttl/ttl
 
 //flowとかCASE STUDYとか
 el_ttlHeader/ttlHeader
+
+bl_pointCard/pointCard
