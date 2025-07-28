@@ -1,3 +1,33 @@
+:root{
+    /* background color */
+    --color-bg-base: unset;
+    --color-bg-orange: #FF8C00;
+    --color-bg-orange2: #ffcb6d;
+    //lineの色
+    --color-bg-line: #60C647;
+    //telの色
+    --color-bg-tel: #525252;
+    //footerのコピーライトの部分
+    --color-bg-gray: #E2E2E2;
+
+    /* border color */
+    --color-border-gray: #E2E2E2;
+
+    /* font color */
+    --color-font-white: #FFFFFF;
+    --color-font-base: #000535;
+    --color-font-orange: #FF8C00;
+    --color-font-black: #484848;
+    //pointの文字
+    --color-font-yellow: #FFE48F80;
+    --color-font-white2: #FFFFFFB2;
+    //flowのところ
+    --color-font-gray: #525252;
+    //companyのlabel色
+    --color-font-gray2: #7A7A7A;
+
+}
+
 target:
 target-tag:
 target-class:
