@@ -3,7 +3,7 @@
 /* ブロックモジュール */
 .bl_future {
     background-image: url("../img/future-bg.jpg");
-    background-size: 100% auto;
+    background-size: 100% 100%;
     background-repeat: repeat-y;
     background-position: top center;
     @include g.mq('tab') {
@@ -12,17 +12,18 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_future_inner {
+    padding: 56px 0 86px;
+    width: 91.6%;
+    margin: 0 auto;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_future_header {
@@ -32,7 +33,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_future_header_label {
@@ -42,47 +42,94 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-//タイトル
+//タイトル「が選ばれる」
 .bl_future_header_ttl {
+    color: var(--color-font-gray);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-.bl_future_header_ttl_highlight {
+.bl_future_header_ttl_group {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-gray);
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
+
+//タイトル「NY HOMEが選ばれる」
+.bl_future_header_ttl_group span {
+    color: var(--color-font-orange);
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
+}
+
+.bl_future_header_ttl_lv2 {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.bl_future_header_ttl_lv2 span {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    width: 34px;
+    height: 34px;
+    border-radius: 2px;
+    background: linear-gradient(195.57deg, #FF8B16 10.9%, #FFCA1B 73.17%);
 
 }
 
+//タイトル「3, つ, の, 理, 由」
 .bl_future_header_ttl_num {
+    font-size: 28px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 //リスト
 .bl_future_list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 34px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
