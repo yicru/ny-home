@@ -6,7 +6,9 @@ auto_indent_start();
 <section class="bl_flow">
     <div class="bl_flow_inner">
         <div class="bl_flow_header">
-            <div class="bl_flow_header_badge">FLOW</div>
+            <div class="el_ttlHeader">
+                <span>flow</span>
+            </div>
             <h2 class="bl_flow_header_ttl">工事までの流れ</h2>
         </div>
 

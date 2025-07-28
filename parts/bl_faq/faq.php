@@ -6,7 +6,9 @@ auto_indent_start();
 <section class="bl_faq">
     <div class="bl_faq_inner">
         <div class="bl_faq_header">
-            <div class="el_ttlHeader">FAQ</div>
+            <div class="el_ttlHeader">
+                <span>faq</span>
+            </div>
             <h2 class="bl_faq_header_ttl">よくあるご質問</h2>
         </div>
 

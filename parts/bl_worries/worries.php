@@ -7,7 +7,9 @@ auto_indent_start();
     <!-- 背景グレーエリア -->
     <div class="bl_worries_group">
         <div class="bl_worries_group_inner">
-            <div class="bl_worries_badge">WORRIES</div>
+            <div class="el_ttlHeader">
+                <span>worries</span>
+            </div>
             <h2 class="bl_worries_ttl">こんなお悩みありませんか？</h2>
 
             <!-- お悩み1 -->

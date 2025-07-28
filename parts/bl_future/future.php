@@ -6,7 +6,9 @@ auto_indent_start();
 <section class="bl_future">
     <div class="bl_future_inner">
         <div class="bl_future_header">
-            <div class="el_ttlHeader">FUTURE</div>
+            <div class="el_ttlHeader">
+                <span>future</span>
+            </div>
             <h2 class="bl_future_header_ttl">
                 <span class="bl_future_header_ttl_highlight">NY HOME</span>が選ばれる<br>
                 <span class="bl_future_header_ttl_num">3</span>つの理由
