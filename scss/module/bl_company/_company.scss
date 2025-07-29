@@ -2,23 +2,25 @@
 
 /* ブロックモジュール */
 .bl_company {
+    background: var(--color-bg-white2);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_company_inner {
+    padding: 60px 0 80px;
+    width: 92.3%;
+    margin: 0 auto;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_company_header {
@@ -28,7 +30,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_company_header_tag {
@@ -38,67 +39,91 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-//タイトル
+//タイトル「会社概要」
 .bl_company_header_ttl {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #4F5254;
+    margin-top: 16px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_company_table {
+    margin-top: 30px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 //リスト
 .bl_company_table_list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_company_table_list_item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border-lightgray);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「企業名, 代表者名, 住所, 電話番号, 業務内容, 営業時間, 定休日」
 .bl_company_table_list_item_term {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0em;
+    color: var(--color-font-gray2);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「株式会社NYHOME, 檀上友太, ■ 本社石川県金沢市本江町1-1白川ビル1階■ 広島営業所広島県広島市東区福田町105-1, 070-8524-5047, 土木工事業建築事業屋根工事業塗装工事業解体工事業前各号に附帯又は関連する一切の事業, 10:00-18:00, 水曜日」
 .bl_company_table_list_item_desc {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: 0em;
+    color: #4D5052;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
