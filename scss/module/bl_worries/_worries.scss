@@ -8,7 +8,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_worries_group {
@@ -16,13 +15,15 @@
     background-size: 100% auto;
     background-repeat: repeat-y;
     background-position: top center;
+    padding-top: 60px;
+    position: relative;
+    z-index: 1;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_worries_group_inner {
@@ -32,7 +33,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_worries_badge {
@@ -42,59 +42,92 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-//タイトル
+//タイトル「こんなお悩みありませんか？」
 .bl_worries_ttl {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    margin-top: 14px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_worries_fukidasi {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    padding: 0 27px 0 20px;
 }
 
 .bl_worries_txtGroup {
+    display: flex;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-//文章
+//文章「自然災害で家がボロボロ…, トイレが壊れて壁と床が水浸し…, 掃除中に窓を壊しちゃった！！, 留守の間に盗難にあった！！」
 .bl_worries_txtGroup_txt {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #5C5C5C;
+    padding: 10px;
+    border-radius: 10px 10px 10px 0;
+    background: var(--color-bg-white);
+    position: relative;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_worries_txtGroup__rev {
+    justify-content: flex-end;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-.bl_worries_illustText {
-    @include g.mq('tab') {
+.bl_worries_txtGroup__rev  .bl_worries_txtGroup_txt {
+    border-radius: 10px 10px 0 10px;
+}
 
-    }
-    @include g.mq('pc') {
+.bl_worries_txtGroup .bl_worries_txtGroup_txt::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: var(--color-bg-orange3);
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: -10;
+    border-radius: 10px 10px 10px 0;
+}
 
-    }
-
+.bl_worries_txtGroup__rev  .bl_worries_txtGroup_txt,
+.bl_worries_txtGroup__rev .bl_worries_txtGroup_txt::after {
+    border-radius: 10px 10px 0 10px!important;
 }
 
 //画像
@@ -105,7 +138,19 @@
     @include g.mq('pc') {
 
     }
+}
 
+
+.bl_worries_group2_img {
+    //39 - 16
+    padding: 0 23px;
+    margin-top: 22px;
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
 }
 
 .bl_worries_separatorImg {
@@ -115,7 +160,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_worries_group2 {
@@ -123,23 +167,25 @@
     background-size: 100% auto;
     background-repeat: repeat-y;
     background-position: top center;
+    padding: 42px 0 calc( 59px - 18px );
+    //margin-top: 18px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_worries_group2_inner {
+    width: 91.6%;
+    margin: 0 auto;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_worries_solutionTxt {
@@ -149,47 +195,101 @@
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「あなたのお悩みを, の, で解決！」
 .bl_worries_solutionTxt_para {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-black);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//NYHOME,の のgroup
+.bl_worries_solutionTxt_para_group {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+//NYHOMEロゴ
+.bl_worries_solutionTxt_para_group_img {
+    width: 142px;
+}
+
+.bl_worries_solutionTxt_para_group2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+//タイトル「火災保険適応工事」
 .bl_worries_solutionTxt_para_lv2 {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-orange);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//タイトル「火災保険の申請から工事まで」
 .bl_worries_subTtl {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-black);
+    margin-top: 21px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//タイトル「一貫して対応します！」
 .bl_worries_subTtl_lv2 {
+    color: var(--color-font-orange);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_worries_descTxt_group {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
 }
 
 .bl_worries_descTxt {
@@ -199,25 +299,44 @@
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「火災保険は、自然災害による被害はもちろん、建物の破損や汚損、水漏れ、盗難など…日常生活で起こる様々なトラブルも保証の対象です。, NY HOMEは、火災保険の申請サポートから工事まで一貫して対応します！, まずは、お持ちの火災保険でどこまでの補償が受けられるのかチェック！まずはお気軽にご相談ください。」
 .bl_worries_descTxt_para {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.9;
+    letter-spacing: 0em;
+    color: var(--color-font-base);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「建物の破損や汚損、水漏れ、盗難など…, 火災保険の申請サポートから工事まで一貫して対応します！」
 .bl_worries_descTxt_para_lv2 {
+    font-weight: 700;
+    display: inline;
+    text-decoration: underline var(--color-bg-orange2) 19px;
+    text-underline-offset: -15px;
+    text-decoration-skip-ink: none;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_worries_ctaWrap {
+    margin-top: 30px;
+    @include g.mq('tab') {
+
+    }
+    @include g.mq('pc') {
+
+    }
 }
