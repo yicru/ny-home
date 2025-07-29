@@ -1,3 +1,70 @@
 @use "../../global/" as g;
 
 /* ブロックモジュール */
+//
+.bl_case {
+    padding: 60px 0 96px;
+    background-image: url("../img/case-bg.jpg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_case_inner {
+    margin: 0 auto;
+    width: 86.1%;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_case_header {
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//タイトル
+.bl_case_header_ttl {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    margin-top: 10px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_case_list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+    gap: 24px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}

@@ -1,3 +1,77 @@
 @use "../../global/" as g;
 
 /* ブロックモジュール */
+.bl_beforeAfter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_beforeAfter_imgWrap {
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_beforeAfter_img {
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_beforeAfter_txtGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_beforeAfter_txtGroup_ttl {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--color-font-white);
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_beforeAfter_txtGroup_txt {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--color-font-white);
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
