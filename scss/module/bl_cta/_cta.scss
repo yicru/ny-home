@@ -2,13 +2,13 @@
 
 /* ブロックモジュール */
 .bl_cta {
+    width: 100%;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_inner {
@@ -18,78 +18,109 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_msg {
+    background: var(--color-bg-orange);
+    color: var(--color-font-white);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    padding: 9px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_msg_tag {
+    background: var(--color-bg-white);
+    color: var(--color-font-orange);
+    padding: 2px 8px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-align: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 //文章
 .bl_cta_msg_txt {
+    font-family: Noto Sans JP;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-align: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup {
+    display: flex;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_cta_btnGroup > :nth-child(1) {
+    /* スタイルを記述 */
+    background: var(--color-bg-tel);
+}
+.bl_cta_btnGroup > :nth-child(2) {
+    /* スタイルを記述 */
+    background: var(--color-bg-line);
 }
 
 .bl_cta_btnGroup_item {
+    flex: 1;
+    padding: 23px 8px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_link {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_iconWrap {
+    width: 32px;
+    height: 32px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_iconWrap_icon {
@@ -99,7 +130,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_txtGroup {
@@ -109,47 +139,86 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_txtGroup_tel {
+    font-weight: 700;
+    font-size: 14.5px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--color-font-white);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_cta_btnGroup_item_txtGroup_group {
+    margin-top: 3.5px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.bl_cta_btnGroup_item_txtGroup_arrow {
+    display: flex;
+}
+
+.bl_cta_btnGroup_item_txtGroup_arrow,
+.bl_cta_btnGroup_item_txtGroup_arrow_img {
+    width: 13px;
+    height: 13px;
 }
 
 .bl_cta_btnGroup_item_txtGroup_time {
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: center;
+    background: var(--color-font-white);
+    color: var(--color-font-gray3);
+    justify-content: center;
+    margin-top: 3.5px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_txtGroup_title {
+    font-family: Noto Sans JP;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--color-font-white);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_txtGroup_desc {
+    font-family: Noto Sans JP;
+    font-weight: 700;
+    font-size: 12.6px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--color-font-white);
+    white-space: nowrap;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_cta_btnGroup_item_txtGroup_arrow {
@@ -159,5 +228,4 @@
     @include g.mq('pc') {
 
     }
-
 }

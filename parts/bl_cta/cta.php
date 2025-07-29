@@ -39,8 +39,14 @@ auto_indent_start();
                     </div>
                     <div class="bl_cta_btnGroup_item_txtGroup">
                         <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
-                        <span class="bl_cta_btnGroup_item_txtGroup_desc">で気軽にご相談</span>
-                        <span class="bl_cta_btnGroup_item_txtGroup_arrow">></span>
+                        <div class="bl_cta_btnGroup_item_txtGroup_group">
+                            <span class="bl_cta_btnGroup_item_txtGroup_desc">
+                                で気軽にご相談
+                            </span>
+                            <span class="bl_cta_btnGroup_item_txtGroup_arrow">
+                                <img class="bl_cta_btnGroup_item_txtGroup_arrow_img" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="9" height="9">
+                            </span>
+                        </div>
                     </div>
                 </a>
             </div>
