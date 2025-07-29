@@ -16,3 +16,13 @@
 @use "../module/el_ttl/ttl";
 @use "../module/el_ttlHeader/ttlHeader";
 @use "../module/bl_pointCard/pointCard";
+
+.bl_spArea {
+    
+}
+
+.bl_spArea_inner {
+    max-width: 375px;
+    margin: 0 auto;
+    position: relative;
+}
