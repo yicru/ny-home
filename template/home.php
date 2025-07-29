@@ -70,6 +70,9 @@ if( !isset($_GET["debug"]) ){
                 //キービジュアル
                 include( "parts/bl_kv/kv.php" )?>
 
+                <?php //CTA
+                include( "parts/bl_cta/top-kvBottom-cta.php" )?>
+
                 <?php //お悩みセクション
                 include( "parts/bl_worries/worries.php" )?>
 
