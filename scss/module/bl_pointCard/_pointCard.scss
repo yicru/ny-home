@@ -1,0 +1,187 @@
+@use "../../global/" as g;
+
+/* ブロックモジュール */
+//
+.bl_pointCard {
+    background: var(--color-bg-white);
+    padding: 13px 10px 30px 10px;
+    border-radius: 4px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_pointCard_headGroup {
+    position: relative;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+.bl_pointCard_headGroup_point {
+    position: absolute;
+    right: 0;
+    top: -17px;
+}
+
+//タイトル「POINT」
+.bl_pointCard_headGroup_label {
+    font-weight: 700;
+    font-size: 19.25px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-yellow);
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//タイトル「01」
+.bl_pointCard_headGroup_num {
+    font-weight: 700;
+    font-size: 59.79px;
+    line-height: 0.85;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-yellow);
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_pointCard_body {
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//文章「火災保険の認定金額分で, 迅速な対応で, 申請から工事まで必要な工程を」
+.bl_pointCard_headGroup_ttl {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-gray);
+    margin-top: 17px;
+    position: relative;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: flex-start;
+    padding-left: 8px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//タイトル「お客様負担は一切なし！, 「困った」を即解決！, 一貫サポート！」
+.bl_pointCard_headGroup_ttl_lv2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    background: linear-gradient(76.46deg, #FF8B16 13.42%, #FFCA1B 96.71%);
+    padding: 3px 3px 3px 6px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_pointCard_body_imgWrap {
+    margin-top: 24px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//
+.bl_pointCard_body_imgWrap_img {
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//タイトル「0」
+.bl_pointCard_body_imgWrap_img[alt*="0"] + .bl_pointCard_body_txtGroup .bl_pointCard_body_txtGroup_txt:first-child {
+    font-weight: 700;
+    font-size: 89.36px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+}
+
+//タイトル「￥」
+.bl_pointCard_body_imgWrap_img[alt*="￥"] + .bl_pointCard_body_txtGroup .bl_pointCard_body_txtGroup_txt:first-child {
+    font-weight: 700;
+    font-size: 54.09px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+}
+
+//
+.bl_pointCard_body_txtGroup {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
+
+//文章「NYHOMEは復旧義務に従い原則火災保険認定金額と認定内容に沿った工事を行います！, 保険金額以上の工事はご要望がない限り一切行行いません！, また手数料等も一切発生しませんのでご安心してご相談ください！, 無料相談から迅速な対応でお客様のお困りの解決に最速で対応できるよに尽力いたします！, お家のトラブルによってはスピードが求められる工事もあります！, 少しでも被害の拡大を抑えかつ賢くリフォームができるように最適のご提案をさせていただきます！, 申請から工事までを全てNYHOMEでサポートいたします！, 安心してまずは無料相談から！, 特定業者や詐欺業者にご注意ください！近年火災保険を商材とした特定業者や詐欺業者が横行しています！十分にご注意ください！」
+.bl_pointCard_body_txtGroup_txt {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.9;
+    letter-spacing: 0em;
+    color: var(--color-font-base);
+    padding: 0 13px;
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+        
+    }
+}
