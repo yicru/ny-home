@@ -4,72 +4,74 @@
 .bl_header {
     height: 60px;
     width: 100%;
+    position: absolute;
+    padding-top: 10px;
+    z-index: 25;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_header_inner {
     display: flex;
     padding-right: 16px;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_logoWrap {
+    width: 130px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_logoWrap_link {
-    width: 60px;
     padding: 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 162px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_logoWrap_logo {
+    width: 130px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_btnGroup {
+    height: 40px;
+    display: flex;
+    gap: 5px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_btnGroup_iconWrap {
@@ -79,7 +81,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_btnGroup_iconWrap_link {
@@ -89,7 +90,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_header_btnGroup_iconWrap_icon {
@@ -99,7 +99,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 //文章
@@ -110,5 +109,4 @@
     @include g.mq('pc') {
 
     }
-
 }

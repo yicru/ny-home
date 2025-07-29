@@ -6,12 +6,12 @@ auto_indent_start();
 <header class="bl_header">
     <div class="bl_header_inner">
         <!-- ロゴ -->
-        <div class="bl_header_logoWrap">
+        <h1 class="bl_header_logoWrap">
             <a href="/" class="bl_header_logoWrap_link">
                 <span class="un_hide">NYHOME</span>
-                <img src="/img/header-logo.jpg" alt="NYHOME" width="100" height="25" class="bl_header_logoWrap_logo">
+                <img src="/img/header-logo.jpg" alt="NYHOME" width="130" height="31" class="bl_header_logoWrap_logo">
             </a>
-        </div>
+        </h1>
         <!-- end ロゴ -->
 
         <!-- ボタングループ -->
@@ -20,7 +20,7 @@ auto_indent_start();
             <div class="bl_header_btnGroup_iconWrap">
                 <a href="tel:" class="bl_header_btnGroup_iconWrap_link">
                     <!-- TODO:電話番号設定 -->
-                    <img src="img/tel-icon.svg" alt="TEL" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
+                    <img src="img/header-tel-btn.svg" alt="TEL" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
                 </a>
             </div>
             <!-- end TEL -->
@@ -29,8 +29,8 @@ auto_indent_start();
             <div class="bl_header_btnGroup_iconWrap">
                 <a href="#" class="bl_header_btnGroup_iconWrap_link">
                     <!-- TODO:LINEリンク設定 -->
-                    <img src="img/line-icon.svg" alt="" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
-                    <span class="bl_header_btnGroup_iconWrap_txt">LINEで無料相談</span>
+                    <img src="img/header-line-btn.svg" alt="" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
+                    <span class="un_hide">LINEで無料相談</span>
                 </a>
             </div>
             <!-- end LINE -->
