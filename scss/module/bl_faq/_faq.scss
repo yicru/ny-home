@@ -2,23 +2,23 @@
 
 /* ブロックモジュール */
 .bl_faq {
+    background: var(--color-bg-gray2);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faq_inner {
+    padding: 60px 16px 80px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faq_header {
@@ -28,7 +28,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faq_header_badge {
@@ -38,80 +37,104 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-//タイトル
+//タイトル「よくあるご質問」
 .bl_faq_header_ttl {
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    margin-top: 10px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 //リスト
 .bl_faq_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 26px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faqCard {
+    background: var(--color-bg-white);
+    border-radius: 4px;
+    padding: 14px 16px 21px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faqCard_question {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 16px;
+    //border-bottom: 1px dashed var(--color-border-lightgray);
+    /* 幅2の線を作る */
+    background-image: linear-gradient(to right, var(--color-border-lightgray), var(--color-border-lightgray) 2px, transparent 2px, transparent 4px);  
+    background-size: 4px 1px;          /* グラデーションの幅・高さを指定 */
+    background-position: left bottom;  /* 背景の開始位置を指定 */
+    background-repeat: repeat-x;       /* 横向きにのみ繰り返す */
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faqCard_question_iconWrap {
+    width: 31px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faqCard_question_icon {
+    width: 31px;
+    height: 31px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-//タイトル
+//タイトル「工場や店舗でも火災保険の保証は対応していますか？, 火災保険申請を行うと、保険料はあがりますか？, 災害被害はどこまでが保険対象範囲ですか？, 窓ガラスの割れた理由がわからない場合、保証は適応されますか？, 調査費用はかかりますか？, 受け取った保険金は必ず修繕に使わないといけませんか？, いつまでの災害なら申請できますか？, 過去に申請したことがありますが、再度申請できますか？」
 .bl_faqCard_question_ttl {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0em;
+    color: var(--color-font-base);
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_faqCard_answer {
@@ -121,16 +144,20 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-//文章
+//文章「はい、対応しています。火災保険は一般住宅だけでなく、マンションや賃貸物件、工場や店舗に火災保険の保障は対応しています。, いいえ、車両などの保険とは違い、保険申請を行っても保険料はあがりません。, 火災保険は火災はもちろん、水災害や風災、落雷、雪災、落雷、ひょう災など…さまざまな被害に保証が適用されます。, 窓ガラスの破損は、窓ガラスが割れた原因が火災保険の対象となります。そのため、窓ガラスが割れた理由がわからない場合、原則保証の対象とはなりません。, 調査費用は完全無料です。, 法律上、使途は定められていません。ただし、未修繕の場合、次回の災害時に再申請できない可能性があるため、修繕することをお勧めします, 基本的に被災から3年以内の災害が対象です。早めの申請をお勧めします, 過去に受給した箇所を修繕済みで、新たな災害による被害であれば申請可能です。また、過去の申請箇所以外であれば申請できます」
 .bl_faqCard_answer_txt {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0em;
+    color: var(--color-font-gray2);
+    margin-top: 16px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
