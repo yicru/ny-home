@@ -12,6 +12,10 @@
     //もとのインデント設定に戻す
     $indent_level = $indent_level_swap;
 */
+
+// グローバル変数として設定（インクルードファイルで使用可能に）
+global $indent_level, $indent, $current_indent;
+
 function auto_indent_start() {
     //バッファリング
     ob_start();
@@ -339,4 +343,83 @@ function do_shortcode_tag( $matches ) {
     $shortcode = str_replace(']', '', $shortcode);
     //定義されているタグを実行して返す
     return $shortcode_tags[$shortcode]();
+}
+
+//25/7/30追加
+// グローバルなインクルードデータ管理
+$_INCLUDE = [];
+
+/**
+ * インクルードデータをセット
+ * @param string $module_name モジュール名
+ * @param array $data データ（単体または配列）
+ */
+function set_include_data($module_name, $data) {
+    global $_INCLUDE;
+    $_INCLUDE[$module_name] = $data;
+}
+
+/**
+ * インクルードデータを取得
+ * @param string $module_name モジュール名
+ * @param int|null $index 配列の場合のインデックス（nullの場合は全データ）
+ * @return mixed データまたはnull
+ */
+function get_include_data($module_name, $index = null) {
+    global $_INCLUDE;
+    
+    if (!isset($_INCLUDE[$module_name])) {
+        return null;
+    }
+    
+    $data = $_INCLUDE[$module_name];
+    
+    // インデックスが指定されている場合
+    if ($index !== null) {
+        return isset($data[$index]) ? $data[$index] : null;
+    }
+    
+    return $data;
+}
+
+/**
+ * インクルードデータの配列をループで処理
+ * @param string $module_name モジュール名
+ * @param string $include_path インクルードファイルパス
+ * @param int $indent_level インデントレベル（省略可）
+ */
+function render_include_loop($module_name, $include_path, $indent_level = 3) {
+    $data_list = get_include_data($module_name);
+    
+    if (!is_array($data_list)) {
+        return;
+    }
+    
+    // インデント変数を関数内で定義
+    $indent = "\t";
+    $current_indent = '';
+    
+    // 単体データの場合（連想配列で数値キーがない場合）
+    if (isset($data_list) && !isset($data_list[0])) {
+        $module = $data_list;
+        include($include_path);
+        return;
+    }
+    
+    // 配列データの場合
+    foreach($data_list as $module) {
+        include($include_path);
+    }
+}
+
+/**
+ * 条件付きHTMLタグ出力（空チェック付き）
+ * @param string $tag_format タグのフォーマット（%sにデータが入る）
+ * @param string $content 内容
+ * @param string $default デフォルト値（空文字の場合に使用）
+ * @return string HTML文字列または空文字
+ */
+function output_if_exists($tag_format, $content, $default = '') {
+    $value = !empty($content) ? $content : $default;
+    return !empty($value) ? sprintf($tag_format, htmlspecialchars($value)) : '';
 }
