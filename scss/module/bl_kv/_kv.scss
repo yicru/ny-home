@@ -6,54 +6,100 @@
     background-size: 100% auto;
     background-repeat: repeat-y;
     background-position: top center;
+    position: relative;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_kv {
+    padding-bottom: 50px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_kv_txtGroup {
+    padding-top: 100px;
+    position: relative;
+    z-index: 20;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_kv_txtGroup_group {
+    display: flex;
+    justify-content: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-//文章
+//文章「で」
 .bl_kv_txtGroup_group_txt {
+    font-weight: 900;
+    font-size: 20.09px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+//文章「で」
+.bl_kv_txtGroup_group_txt:not(.bl_kv_txtGroup_group_txt_lv2) {
+    font-weight: 900;
+    font-size: 20.09px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+}
+
+//タイトル「石川」
+.bl_kv_txtGroup_group_txt_lv2:nth-child(1) {
+    font-weight: 900;
+    font-size: 24.11px;
+    line-height: 1.2;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
+    background: var(--color-bg-orange);
+    padding: 0 3px 3px 3px;
+}
+
+//タイトル「火災保険適応工事」
+.bl_kv_txtGroup_group_txt_lv2:nth-child(2) {
+    font-weight: 900;
+    font-size: 24.11px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-orange);
+    padding: 0 3px 3px 3px;
+    background: var(--color-bg-white);
 }
 
 .bl_kv_txtGroup_group_txt_lv2 {
@@ -63,7 +109,16 @@
     @include g.mq('pc') {
 
     }
+}
 
+//文章「なら」
+.bl_kv_txtGroup_group_txt:contains("なら") {
+    font-weight: 900;
+    font-size: 20.09px;
+    line-height: 1;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--color-font-white);
 }
 
 .bl_kv_txtGroup_group2 {
@@ -73,48 +128,82 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-//文章
+//文章「に」
 .bl_kv_txtGroup_group2_txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    gap: 3px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「に」
+.bl_kv_txtGroup_group2_txt:not(.bl_kv_txtGroup_group2_txt_lv2):not(.bl_kv_txtGroup_group2_txt_lv3) {
+    font-weight: 900;
+    font-size: 32.42px;
+    line-height: 1;
+    letter-spacing: 0em;
+    color: var(--color-font-white);
+}
+
+//タイトル「NYHOME」
 .bl_kv_txtGroup_group2_txt_lv2 {
+    font-weight: 700;
+    font-size: 60.78px;
+    line-height: 0.9;
+    letter-spacing: 0em;
+    color: var(--color-font-white);
+    background: var(--color-bg-orange);
+    padding: 0 0 5px 0;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//タイトル「おまかせください！」
 .bl_kv_txtGroup_group2_txt_lv3 {
+    font-weight: 900;
+    font-size: 32.15px;
+    line-height: 1;
+    letter-spacing: 0em;
+    color: var(--color-font-white);
+    text-align: center;
+    margin: 3px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_kv_badgeList {
+    display: flex;
+    margin-top: 197px;
+    position: relative;
+    z-index: 200;
+    padding: 0 7px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_kv_badgeList > :nth-child(2) {
+    margin-top: 30px;
 }
 
 .bl_kv_badgeList_item {
@@ -124,7 +213,6 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 //画像
@@ -135,17 +223,18 @@
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_kv_workerImg {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 //画像
@@ -156,5 +245,4 @@
     @include g.mq('pc') {
 
     }
-
 }

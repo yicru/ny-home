@@ -14,7 +14,10 @@ auto_indent_start();
             </div>
             <div class="bl_kv_txtGroup_group2">
                 <p class="bl_kv_txtGroup_group2_txt">
-                    <span class="bl_kv_txtGroup_group2_txt_lv2">NYHOME</span>に<br>
+                    <span class="bl_kv_txtGroup_group2_txt_lv2">NYHOME</span>
+                    <span>に</span>
+                </p>
+                <p class="bl_kv_txtGroup_group2_txt2">
                     <span class="bl_kv_txtGroup_group2_txt_lv3">おまかせください！</span>
                 </p>
             </div>
