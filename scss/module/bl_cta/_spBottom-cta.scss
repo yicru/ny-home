@@ -11,6 +11,7 @@
     margin: 0 auto;
     left: 50%;
     transform: translate(-50%, 0);
+    z-index: 300;
     @include g.mq('tab') {
         display: none;
     }
