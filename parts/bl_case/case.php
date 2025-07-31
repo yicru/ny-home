@@ -18,6 +18,7 @@ auto_indent_start();
         <ul class="bl_case_list"><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
             //現在のインデントの個数
             $indent_level = 3;?>
+
             <?php
             set_include_data('bl_beforeAfter', [
                 [
