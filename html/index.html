@@ -22,10 +22,13 @@
         <!-- robots -->
         <meta name="robots" content="noindex, nofollow">
 
+        <!-- keywords -->
+        <meta name="keywords" content="<!-- TODO:keywords(,区切りでキーワード) -->">
+
         <!-- favicon -->
-        <meta name="msapplication-TileImage" content="img/favicon.ico">
-        <link rel="icon" href="img/favicon.ico" sizes="128x128">
-        <link rel="apple-touch-icon" href="img/webclip.png">
+        <meta name="msapplication-TileImage" content="<!-- TODO:ファビコン(url)設定(img/favicon.ico等) -->">
+        <link rel="icon" href="<!-- TODO:link rel iconのurl設定(img/favicon.ico等) -->" sizes="<!-- TODO:アイコンサイズ設定(128x128等) -->">
+        <link rel="apple-touch-icon" href="<!-- TODO:アイコン設定(img/webclip.png等) -->">
 
         <!-- og -->
         <meta property="og:url" content="localhost/htdocs/github/">
@@ -41,8 +44,10 @@
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <!-- TODO:使用フォントの設定 -->
+        <!-- noto sans -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+        <!-- dm sans -->
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
 
         <!-- css共通 -->
         <link rel="stylesheet" href="css/style-top.css">
@@ -55,12 +60,12 @@
             <header class="bl_header">
                 <div class="bl_header_inner">
                     <!-- ロゴ -->
-                    <div class="bl_header_logoWrap">
+                    <h1 class="bl_header_logoWrap">
                         <a href="/" class="bl_header_logoWrap_link">
                             <span class="un_hide">NYHOME</span>
-                            <img src="img/header-logo.jpg" alt="NYHOME" width="100" height="25" class="bl_header_logoWrap_logo">
+                            <img src="/img/header-logo.jpg" alt="NYHOME" width="130" height="31" class="bl_header_logoWrap_logo">
                         </a>
-                    </div>
+                    </h1>
                     <!-- end ロゴ -->
 
                     <!-- ボタングループ -->
@@ -69,7 +74,7 @@
                         <div class="bl_header_btnGroup_iconWrap">
                             <a href="tel:" class="bl_header_btnGroup_iconWrap_link">
                                 <!-- TODO:電話番号設定 -->
-                                <img src="img/tel-icon.svg" alt="TEL" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
+                                <img src="img/header-tel-btn.svg" alt="TEL" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
                             </a>
                         </div>
                         <!-- end TEL -->
@@ -78,8 +83,8 @@
                         <div class="bl_header_btnGroup_iconWrap">
                             <a href="#" class="bl_header_btnGroup_iconWrap_link">
                                 <!-- TODO:LINEリンク設定 -->
-                                <img src="img/line-icon.svg" alt="" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
-                                <span class="bl_header_btnGroup_iconWrap_txt">LINEで無料相談</span>
+                                <img src="img/header-line-btn.svg" alt="" width="" height="" class="bl_header_btnGroup_iconWrap_icon">
+                                <span class="un_hide">LINEで無料相談</span>
                             </a>
                         </div>
                         <!-- end LINE -->
@@ -102,7 +107,10 @@
                             </div>
                             <div class="bl_kv_txtGroup_group2">
                                 <p class="bl_kv_txtGroup_group2_txt">
-                                    <span class="bl_kv_txtGroup_group2_txt_lv2">NYHOME</span>に<br>
+                                    <span class="bl_kv_txtGroup_group2_txt_lv2">NYHOME</span>
+                                    <span>に</span>
+                                </p>
+                                <p class="bl_kv_txtGroup_group2_txt2">
                                     <span class="bl_kv_txtGroup_group2_txt_lv3">おまかせください！</span>
                                 </p>
                             </div>
@@ -112,20 +120,20 @@
                         <!-- バッジリスト -->
                         <div class="bl_kv_badgeList">
                             <div class="bl_kv_badgeList_item">
-                                <img src="img/badge.png" alt="お客様負担一切なし！" width="120" height="118" class="bl_kv_badgeList_item_img">
+                                <img src="/img/kv-badge.png" alt="お客様負担一切なし！" width="120" height="118" class="bl_kv_badgeList_item_img">
                             </div>
                             <div class="bl_kv_badgeList_item">
-                                <img src="img/badge2.png" alt="申請から工事まで一貫サポート" width="120" height="118" class="bl_kv_badgeList_item_img">
+                                <img src="/img/kv-badge2.png" alt="申請から工事まで一貫サポート" width="120" height="118" class="bl_kv_badgeList_item_img">
                             </div>
                             <div class="bl_kv_badgeList_item">
-                                <img src="img/badge3.png" alt="豊富な経験・実績で確実な受給" width="120" height="118" class="bl_kv_badgeList_item_img">
+                                <img src="/img/kv-badge3.png" alt="豊富な経験・実績で確実な受給" width="120" height="118" class="bl_kv_badgeList_item_img">
                             </div>
                         </div>
                         <!-- end バッジリスト -->
 
                         <!-- 作業員イラスト -->
                         <div class="bl_kv_workerImg">
-                            <img src="img/workers.png" alt="作業員イラスト" width="" height="" class="bl_kv_workerImg_img">
+                            <img src="/img/kv-illust.png" alt="作業員イラスト" width="" height="" class="bl_kv_workerImg_img">
                             <!-- TODO:img width height設定 -->
                         </div>
                         <!-- end 作業員イラスト -->
@@ -133,93 +141,206 @@
                 </section>
                 <!-- end キービジュアル -->
 
+                <div class="bl_topKvBottomCta">
+            <div class="bl_topKvBottomCta_ctaWrap">
+                <!-- CTA -->
+                <div class="bl_cta">
+                    <div class="bl_cta_inner">
+                        <!-- CTAメッセージ -->
+                        <div class="bl_cta_msg">
+                            <span class="bl_cta_msg_tag">相談無料</span>
+                            <span class="bl_cta_msg_txt">お気軽にお問い合わせください！</span>
+                        </div>
+                        <!-- end CTAメッセージ -->
+
+                        <!-- CTAボタングループ -->
+                        <div class="bl_cta_btnGroup">
+                            <!-- 電話ボタン -->
+                            <div class="bl_cta_btnGroup_item">
+                                <a href="tel:070-8524-5047" class="bl_cta_btnGroup_item_link">
+                                    <div class="bl_cta_btnGroup_item_iconWrap">
+                                        <img src="/img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                    </div>
+                                    <div class="bl_cta_btnGroup_item_txtGroup">
+                                        <span class="bl_cta_btnGroup_item_txtGroup_tel">070-8524-5047</span>
+                                        <span class="bl_cta_btnGroup_item_txtGroup_time">平日 9:00-17:00 営業</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- end 電話ボタン -->
+
+                            <!-- LINEボタン -->
+                            <div class="bl_cta_btnGroup_item">
+                                <a href="#" class="bl_cta_btnGroup_item_link">
+                                    <!-- TODO:LINEリンク設定 -->
+                                    <div class="bl_cta_btnGroup_item_iconWrap">
+                                        <img src="/img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                    </div>
+                                    <div class="bl_cta_btnGroup_item_txtGroup">
+                                        <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
+                                        <div class="bl_cta_btnGroup_item_txtGroup_group">
+                                            <span class="bl_cta_btnGroup_item_txtGroup_desc">
+                                                で気軽にご相談
+                                            </span>
+                                            <span class="bl_cta_btnGroup_item_txtGroup_arrow">
+                                                <img class="bl_cta_btnGroup_item_txtGroup_arrow_img" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="9" height="9">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- end LINEボタン -->
+                        </div>
+                        <!-- end CTAボタングループ -->
+                    </div>
+                </div>
+                <!-- end CTA -->
+            </div>
+        </div>
+
                 <!-- お悩みセクション -->
                 <section class="bl_worries">
                     <!-- 背景グレーエリア -->
                     <div class="bl_worries_group">
                         <div class="bl_worries_group_inner">
-                            <div class="bl_worries_badge">WORRIES</div>
+                            <div class="el_ttlHeader">
+                                <span>worries</span>
+                            </div>
                             <h2 class="bl_worries_ttl">こんなお悩みありませんか？</h2>
 
-                            <!-- お悩み1 -->
-                            <div class="bl_worries_txtGroup">
-                                <p class="bl_worries_txtGroup_txt">自然災害で家がボロボロ…</p>
+                            <div class="bl_worries_fukidasi">
+                                <!-- お悩み1 -->
+                                <div class="bl_worries_txtGroup">
+                                    <p class="bl_worries_txtGroup_txt">自然災害で家がボロボロ…</p>
+                                </div>
+                                <!-- end お悩み1 -->
+
+                                <!-- お悩み2 -->
+                                <div class="bl_worries_txtGroup bl_worries_txtGroup__rev">
+                                    <p class="bl_worries_txtGroup_txt">トイレが壊れて壁と床が水浸し…</p>
+                                </div>
+                                <!-- end お悩み2 -->
+
+                                <!-- お悩み3 -->
+                                <div class="bl_worries_txtGroup">
+                                    <p class="bl_worries_txtGroup_txt">掃除中に窓を壊しちゃった！！</p>
+                                </div>
+                                <!-- end お悩み3 -->
+
+                                <!-- お悩み4 -->
+                                <div class="bl_worries_txtGroup bl_worries_txtGroup__rev">
+                                    <p class="bl_worries_txtGroup_txt">留守の間に盗難にあった！！</p>
+                                </div>
+                                <!-- end お悩み4 -->
                             </div>
-                            <!-- end お悩み1 -->
 
-                            <!-- お悩み2 -->
-                            <div class="bl_worries_txtGroup bl_worries_txtGroup__rev">
-                                <p class="bl_worries_txtGroup_txt">トイレが壊れて壁と床が水浸し…</p>
-                            </div>
-                            <!-- end お悩み2 -->
-
-                            <!-- お悩み3 -->
-                            <div class="bl_worries_txtGroup">
-                                <p class="bl_worries_txtGroup_txt">掃除中に窓を壊しちゃった！！</p>
-                            </div>
-                            <!-- end お悩み3 -->
-
-                            <!-- お悩み4 -->
-                            <div class="bl_worries_txtGroup bl_worries_txtGroup__rev">
-                                <p class="bl_worries_txtGroup_txt">留守の間に盗難にあった！！</p>
-                            </div>
-                            <!-- end お悩み4 -->
-
-                            <p class="bl_worries_illustText">イラストが入ります</p>
-
-                            <!-- プレースホルダー画像1 -->
-                            <img src="https://placehold.jp/300x200.png" alt="" class="bl_worries_img" width="" height="" aria-hidden="true">
-
-                            <!-- プレースホルダー画像2 -->
-                            <img src="https://placehold.jp/300x200.png" alt="" class="bl_worries_img" width="" height="" aria-hidden="true">
+                            <img src="/img/worries-illlust.png" alt="" class="bl_worries_img" width="377" height="206" aria-hidden="true">
                         </div>
                     </div>
                     <!-- end 背景グレーエリア -->
-
-                    <!-- 区切り画像 -->
-                    <img src="https://placehold.jp/375x42.png" alt="" class="bl_worries_separatorImg" width="375" height="42" aria-hidden="true">
 
                     <!-- 背景白エリア -->
                     <div class="bl_worries_group2">
                         <div class="bl_worries_group2_inner">
                             <div class="bl_worries_solutionTxt">
-                                <p class="bl_worries_solutionTxt_para">
-                                    あなたのお悩みを<br>
-                                    <span class="bl_worries_solutionTxt_para_lv2">NYHOME</span>の<br>
-                                    火災保険適応工事で解決！
-                                </p>
+                                <h2 class="bl_worries_solutionTxt_para">
+                                    <span>あなたのお悩みを</span>
+                                    <div class="bl_worries_solutionTxt_para_group">
+                                        <span class="un_hide">NYHOME</span>
+                                        <img src="/img/header-logo.jpg" alt="NYHOME" width="130" height="31" class="bl_header_logoWrap_logo">
+                                        <span>の</span>
+                                    </div>
+                                    <div class="bl_worries_solutionTxt_para_group2">
+                                        <span class="bl_worries_solutionTxt_para_lv2">火災保険適応工事で</span>解決！
+                                    </div>
+                                </h2>
                             </div>
 
-                            <p class="bl_worries_illustText">イラストが入ります</p>
-
-                            <!-- プレースホルダー画像 -->
-                            <img src="https://placehold.jp/300x200.png" alt="" class="bl_worries_img" width="" height="" aria-hidden="true">
+                            <img src="/img/worries-illlust2.png" alt="" class="bl_worries_group2_img" width="" height="" aria-hidden="true">
 
                             <h3 class="bl_worries_subTtl">
-                                火災保険の申請から工事まで<br>
+                                <span>火災保険の申請から工事まで</span>
                                 <span class="bl_worries_subTtl_lv2">一貫して対応します！</span>
                             </h3>
 
-                            <div class="bl_worries_descTxt">
-                                <p class="bl_worries_descTxt_para">
-                                    火災保険は、自然災害による被害はもちろん、<br>
-                                    <span class="bl_worries_descTxt_para_lv2">建物の破損や汚損、水漏れ、盗難など…日常生活で起こる様々なトラブルも保証の対象</span>です。
-                                </p>
+                            <div class="bl_worries_descTxt_group">
+                                <div class="bl_worries_descTxt">
+                                    <p class="bl_worries_descTxt_para">
+                                        火災保険は、自然災害による被害はもちろん、<br>
+                                        <span class="bl_worries_descTxt_para_lv2">
+                                            建物の破損や汚損、水漏れ、盗難など…
+                                        </span>
+                                        日常生活で起こる様々なトラブルも保証の対象です。
+                                    </p>
+                                </div>
+
+                                <div class="bl_worries_descTxt">
+                                    <p class="bl_worries_descTxt_para">
+                                        NY HOMEは、<span class="bl_worries_descTxt_para_lv2">火災保険の申請サポートから工事まで一貫して対応します！</span>
+                                    </p>
+                                </div>
+
+                                <div class="bl_worries_descTxt">
+                                    <p class="bl_worries_descTxt_para">
+                                        まずは、お持ちの火災保険でどこまでの補償が受けられるのかチェック！まずはお気軽にご相談ください。
+                                    </p>
+                                </div>
                             </div>
 
-                            <div class="bl_worries_descTxt">
-                                <p class="bl_worries_descTxt_para">
-                                    NY HOMEは、<span class="bl_worries_descTxt_para_lv2">火災保険の申請サポートから工事まで一貫して対応します！</span>
-                                </p>
-                            </div>
+                            <div class="bl_worries_ctaWrap">
+                                <!-- CTA -->
+                                <div class="bl_cta">
+                                    <div class="bl_cta_inner">
+                                        <!-- CTAメッセージ -->
+                                        <div class="bl_cta_msg">
+                                            <span class="bl_cta_msg_tag">相談無料</span>
+                                            <span class="bl_cta_msg_txt">お気軽にお問い合わせください！</span>
+                                        </div>
+                                        <!-- end CTAメッセージ -->
 
-                            <div class="bl_worries_descTxt">
-                                <p class="bl_worries_descTxt_para">
-                                    まずは、お持ちの火災保険でどこまでの補償が受けられるのかチェック！まずはお気軽にご相談ください。
-                                </p>
-                            </div>
+                                        <!-- CTAボタングループ -->
+                                        <div class="bl_cta_btnGroup">
+                                            <!-- 電話ボタン -->
+                                            <div class="bl_cta_btnGroup_item">
+                                                <a href="tel:070-8524-5047" class="bl_cta_btnGroup_item_link">
+                                                    <div class="bl_cta_btnGroup_item_iconWrap">
+                                                        <img src="/img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                                    </div>
+                                                    <div class="bl_cta_btnGroup_item_txtGroup">
+                                                        <span class="bl_cta_btnGroup_item_txtGroup_tel">070-8524-5047</span>
+                                                        <span class="bl_cta_btnGroup_item_txtGroup_time">平日 9:00-17:00 営業</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- end 電話ボタン -->
 
-                            <!-- TODO:モジュール埋め込み -->
+                                            <!-- LINEボタン -->
+                                            <div class="bl_cta_btnGroup_item">
+                                                <a href="#" class="bl_cta_btnGroup_item_link">
+                                                    <!-- TODO:LINEリンク設定 -->
+                                                    <div class="bl_cta_btnGroup_item_iconWrap">
+                                                        <img src="/img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                                    </div>
+                                                    <div class="bl_cta_btnGroup_item_txtGroup">
+                                                        <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
+                                                        <div class="bl_cta_btnGroup_item_txtGroup_group">
+                                                            <span class="bl_cta_btnGroup_item_txtGroup_desc">
+                                                                で気軽にご相談
+                                                            </span>
+                                                            <span class="bl_cta_btnGroup_item_txtGroup_arrow">
+                                                                <img class="bl_cta_btnGroup_item_txtGroup_arrow_img" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="9" height="9">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- end LINEボタン -->
+                                        </div>
+                                        <!-- end CTAボタングループ -->
+                                    </div>
+                                </div>
+                                <!-- end CTA -->
+                            </div>
                         </div>
                     </div>
                     <!-- end 背景白エリア -->
@@ -227,407 +348,597 @@
                 <!-- end お悩みセクション -->
 
                 <!-- bl_future -->
-                <section class="bl_future">
-                    <div class="bl_future_inner">
-                        <div class="bl_future_header">
-                            <div class="bl_future_header_label">FUTURE</div>
-                            <h2 class="bl_future_header_ttl">
-                                <span class="bl_future_header_ttl_highlight">NY HOME</span>が選ばれる<br>
-                                <span class="bl_future_header_ttl_num">3</span>つの理由
-                            </h2>
+            <section class="bl_future">
+                <div class="bl_future_inner">
+                    <div class="bl_future_header">
+                        <div class="el_ttlHeader">
+                            <span>future</span>
                         </div>
-
-                        <ul class="bl_future_list">
-                            <!-- ポイント1 -->
-                            <li class="bl_pointCard">
-                                <div class="bl_pointCard_header">
-                                    <div class="bl_pointCard_header_label">POINT</div>
-                                    <div class="bl_pointCard_header_num">01</div>
-                                </div>
-                                <div class="bl_pointCard_body">
-                                    <h3 class="bl_pointCard_body_ttl">
-                                        火災保険の認定金額分で<br>
-                                        <span class="bl_pointCard_body_ttl_highlight">お客様負担は一切なし！</span>
-                                    </h3>
-                                    <div class="bl_pointCard_body_imgWrap">
-                                        <img class="bl_pointCard_body_imgWrap_img" src="https://placehold.jp/300x200" alt="火災保険の認定金額分でお客様負担は一切なしのイラスト" width="300" height="200">
-                                    </div>
-                                    <div class="bl_pointCard_body_txtGroup">
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            NY HOMEは復旧義務に従い原則火災保険認定金額と認定内容に沿った工事を行います。
-                                        </p>
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            保険金額以上の工事はご要望がない限り一切行いません。
-                                        </p>
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            また手数料等も一切発生しませんのでご安心してご相談ください
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end ポイント1 -->
-
-                            <!-- ポイント2 -->
-                            <li class="bl_pointCard">
-                                <div class="bl_pointCard_header">
-                                    <div class="bl_pointCard_header_label">POINT</div>
-                                    <div class="bl_pointCard_header_num">02</div>
-                                </div>
-                                <div class="bl_pointCard_body">
-                                    <h3 class="bl_pointCard_body_ttl">
-                                        火災保険の認定金額分で<br>
-                                        <span class="bl_pointCard_body_ttl_highlight">お客様負担は一切なし！</span>
-                                    </h3>
-                                    <div class="bl_pointCard_body_imgWrap">
-                                        <img class="bl_pointCard_body_imgWrap_img" src="https://placehold.jp/300x200" alt="ポイント2のイラスト" width="300" height="200">
-                                    </div>
-                                    <div class="bl_pointCard_body_txtGroup">
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            NY HOMEは復旧義務に従い原則火災保険認定金額と認定内容に沿った工事を行います。
-                                        </p>
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            保険金額以上の工事はご要望がない限り一切行いません。
-                                        </p>
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            また手数料等も一切発生しませんのでご安心してご相談ください
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end ポイント2 -->
-
-                            <!-- ポイント3 -->
-                            <li class="bl_pointCard">
-                                <div class="bl_pointCard_header">
-                                    <div class="bl_pointCard_header_label">POINT</div>
-                                    <div class="bl_pointCard_header_num">03</div>
-                                </div>
-                                <div class="bl_pointCard_body">
-                                    <h3 class="bl_pointCard_body_ttl">
-                                        火災保険の認定金額分で<br>
-                                        <span class="bl_pointCard_body_ttl_highlight">お客様負担は一切なし！</span>
-                                    </h3>
-                                    <div class="bl_pointCard_body_imgWrap">
-                                        <img class="bl_pointCard_body_imgWrap_img" src="https://placehold.jp/300x200" alt="ポイント3のイラスト" width="300" height="200">
-                                    </div>
-                                    <div class="bl_pointCard_body_txtGroup">
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            NY HOMEは復旧義務に従い原則火災保険認定金額と認定内容に沿った工事を行います。
-                                        </p>
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            保険金額以上の工事はご要望がない限り一切行いません。
-                                        </p>
-                                        <p class="bl_pointCard_body_txtGroup_txt">
-                                            また手数料等も一切発生しませんのでご安心してご相談ください
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end ポイント3 -->
-                        </ul>
+                        <h2 class="bl_future_header_ttl">
+                            <div class="bl_future_header_ttl_group">
+                                <span>NY HOME</span>
+                                が選ばれる
+                            </div>
+                            <div class="bl_future_header_ttl_lv2">
+                                <span class="bl_future_header_ttl_num">3</span>
+                                <span>つ</span>
+                                <span>の</span>
+                                <span>理</span>
+                                <span>由</span>
+                            </div>
+                        </h2>
                     </div>
-                </section>
-                <!-- end bl_future -->
 
-                
+                    <ul class="bl_future_list">
+                        <!-- ポイント1 -->
+                        <li class="bl_pointCard">
+                            <div class="bl_pointCard_headGroup">
+                                <div class="bl_pointCard_headGroup_point">
+                                    <div class="bl_pointCard_headGroup_label">POINT</div>
+                                    <div class="bl_pointCard_headGroup_num">01</div>
+                                </div>
+                                <h3 class="bl_pointCard_headGroup_ttl">
+                                    <span>火災保険の認定金額分で</span>
+                                    <span class="bl_pointCard_headGroup_ttl_lv2">お客様負担は一切なし！</span>
+                                </h3>
+                            </div>
+                            <div class="bl_pointCard_body">
+                                <div class="bl_pointCard_body_imgWrap">
+                                    <img class="bl_pointCard_body_imgWrap_img" src="/img/future-img.jpg" alt="火災保険の認定金額分でお客様負担は一切なしのイラスト" width="300" height="200">
+                                </div>
+                                <div class="bl_pointCard_body_txtGroup">
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        NYHOMEは復旧義務に従い原則火災保険認定金額と認定内容に沿った工事を行います！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        保険金額以上の工事はご要望がない限り一切行いません！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        また手数料等も一切発生しませんのでご安心してご相談ください！
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- end ポイント1 -->
+
+                        <!-- ポイント2 -->
+                        <li class="bl_pointCard">
+                            <div class="bl_pointCard_headGroup">
+                                <div class="bl_pointCard_headGroup_point">
+                                    <div class="bl_pointCard_headGroup_label">POINT</div>
+                                    <div class="bl_pointCard_headGroup_num">02</div>
+                                </div>
+                                <h3 class="bl_pointCard_headGroup_ttl">
+                                    <span>迅速な対応で</span>
+                                    <span class="bl_pointCard_headGroup_ttl_lv2">「困った」を即解決！</span>
+                                </h3>
+                            </div>
+                            <div class="bl_pointCard_body">
+                                <div class="bl_pointCard_body_imgWrap">
+                                    <img class="bl_pointCard_body_imgWrap_img" src="/img/future-img2.jpg" alt="迅速な対応で困ったを即解決のイラスト" width="300" height="200">
+                                </div>
+                                <div class="bl_pointCard_body_txtGroup">
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        無料相談から迅速な対応でお客様のお困りの解決に最速で対応できるよう尽力いたします！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        お家のトラブルによってはスピードが求められる工事もあります！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        少しでも被害の拡大を抑えかつ真心リフォームができるよう最適なご提案をさせていただきます！
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- end ポイント2 -->
+
+                        <!-- ポイント3 -->
+                        <li class="bl_pointCard">
+                            <div class="bl_pointCard_headGroup">
+                                <div class="bl_pointCard_headGroup_point">
+                                    <div class="bl_pointCard_headGroup_label">POINT</div>
+                                    <div class="bl_pointCard_headGroup_num">03</div>
+                                </div>
+                                <h3 class="bl_pointCard_headGroup_ttl">
+                                    <span>申請から工事まで必要な工程を</span>
+                                    <span class="bl_pointCard_headGroup_ttl_lv2">一貫サポート！</span>
+                                </h3>
+                            </div>
+                            <div class="bl_pointCard_body">
+                                <div class="bl_pointCard_body_imgWrap">
+                                    <img class="bl_pointCard_body_imgWrap_img" src="/img/future-img3.jpg" alt="申請から工事まで必要な工程を一貫サポートのイラスト" width="300" height="200">
+                                </div>
+                                <div class="bl_pointCard_body_txtGroup">
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        申請から工事まで全てNYHOMEでサポートいたします！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        安心してまずは無料相談から！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        特定業者や詐欺業者にご注意ください！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        近年火災保険を商材とした特定業者や詐欺業者が横行しています！
+                                    </p>
+                                    <p class="bl_pointCard_body_txtGroup_txt">
+                                        十分にご注意ください！
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- end ポイント3 -->
+
+                    </ul>
+                </div>
+            </section>
+            <!-- end bl_future -->
+
+                <!-- 施工実績 -->
+            <section class="bl_case">
+                <div class="bl_case_inner">
+                    <!-- セクションヘッダー -->
+                    <div class="bl_case_header">
+                        <div class="el_ttlHeader">
+                            <span>case study</span>
+                        </div>
+                        <h2 class="bl_case_header_ttl">施工実績</h2>
+                    </div>
+                    <!-- end セクションヘッダー -->
+
+                    <!-- 実績リスト -->
+                    <ul class="bl_case_list">
+                        <!-- ビフォーアフター -->
+            			<li class="bl_beforeAfter">
+            			    <div class="bl_beforeAfter_imgWrap">
+            			        <img class="bl_beforeAfter_img"
+            			            src="/img/case-img.jpg"
+            			            alt="キッチン水漏れ：排水管からの水漏れで床材が腐敗"
+            			            width="317"
+            			            height="198">
+            			    </div>
+            			    <div class="bl_beforeAfter_txtGroup">
+            			        <h3 class="bl_beforeAfter_txtGroup_ttl">キッチン水漏れ</h3>        <p class="bl_beforeAfter_txtGroup_txt">：排水管からの水漏れで床材が腐敗</p>    </div>
+            			</li>
+            			<!-- end ビフォーアフター -->
+            <!-- ビフォーアフター -->
+            			<li class="bl_beforeAfter">
+            			    <div class="bl_beforeAfter_imgWrap">
+            			        <img class="bl_beforeAfter_img"
+            			            src="/img/case-img2.jpg"
+            			            alt="トイレ壁水濡れ：トイレタンクからの水濡れで壁が被害"
+            			            width="317"
+            			            height="198">
+            			    </div>
+            			    <div class="bl_beforeAfter_txtGroup">
+            			        <h3 class="bl_beforeAfter_txtGroup_ttl">トイレ壁水濡れ</h3>        <p class="bl_beforeAfter_txtGroup_txt">：トイレタンクからの水濡れで壁が被害</p>    </div>
+            			</li>
+            			<!-- end ビフォーアフター -->
+            <!-- ビフォーアフター -->
+            			<li class="bl_beforeAfter">
+            			    <div class="bl_beforeAfter_imgWrap">
+            			        <img class="bl_beforeAfter_img"
+            			            src="/img/case-img3.jpg"
+            			            alt="店舗雨漏れ：強風により雨漏れが発生し店舗内設備が被害"
+            			            width="317"
+            			            height="198">
+            			    </div>
+            			    <div class="bl_beforeAfter_txtGroup">
+            			        <h3 class="bl_beforeAfter_txtGroup_ttl">店舗雨漏れ</h3>        <p class="bl_beforeAfter_txtGroup_txt">：強風により雨漏れが発生し店舗内設備が被害</p>    </div>
+            			</li>
+            			<!-- end ビフォーアフター -->
+            <!-- ビフォーアフター -->
+            			<li class="bl_beforeAfter">
+            			    <div class="bl_beforeAfter_imgWrap">
+            			        <img class="bl_beforeAfter_img"
+            			            src="/img/case-img4.jpg"
+            			            alt="ベランダ波板屋根破損：強風によりベランダの波板が破損"
+            			            width="317"
+            			            height="198">
+            			    </div>
+            			    <div class="bl_beforeAfter_txtGroup">
+            			        <h3 class="bl_beforeAfter_txtGroup_ttl">ベランダ波板屋根破損</h3>        <p class="bl_beforeAfter_txtGroup_txt">：強風によりベランダの波板が破損</p>    </div>
+            			</li>
+            			<!-- end ビフォーアフター -->
+            <!-- ビフォーアフター -->
+            			<li class="bl_beforeAfter">
+            			    <div class="bl_beforeAfter_imgWrap">
+            			        <img class="bl_beforeAfter_img"
+            			            src="/img/case-img5.jpg"
+            			            alt="ブラインドカーテン破損：掃除中にひっかけてしまい破損"
+            			            width="317"
+            			            height="198">
+            			    </div>
+            			    <div class="bl_beforeAfter_txtGroup">
+            			        <h3 class="bl_beforeAfter_txtGroup_ttl">ブラインドカーテン破損</h3>        <p class="bl_beforeAfter_txtGroup_txt">：掃除中にひっかけてしまい破損</p>    </div>
+            			</li>
+            			<!-- end ビフォーアフター -->
+                    </ul>
+                    <!-- end 実績リスト -->
+                </div>
+            </section>
+            <!-- end 施工実績 -->
+
 
                 <!-- 工事までの流れ -->
-                <section class="bl_flow">
-                    <div class="bl_flow_inner">
-                        <div class="bl_flow_header">
-                            <div class="bl_flow_header_badge">FLOW</div>
-                            <h2 class="bl_flow_header_ttl">工事までの流れ</h2>
+            <section class="bl_flow">
+                <div class="bl_flow_inner">
+                    <div class="bl_flow_header">
+                        <div class="el_ttlHeader">
+                            <span>flow</span>
                         </div>
-
-                        <div class="bl_flow_list">
-                            <!-- フローステップ1 -->
-                            <div class="bl_flow_item">
-                                <div class="bl_flow_item_icon">
-                                    <img src="img/icon-phone.svg" alt="" width="" height="" aria-hidden="true">
-                                </div>
-                                <div class="bl_flow_item_content">
-                                    <h3 class="bl_flow_item_content_ttl">01. HPからお問い合わせ</h3>
-                                    <div class="bl_flow_item_content_body">
-                                        <p class="bl_flow_item_content_body_txt">以下のお問い合わせ先よりお問い合わせください</p>
-                                        <div class="bl_flow_item_content_body_btnGroup">
-                                            <a href="#" class="bl_flow_item_content_body_btnGroup_btn bl_flow_item_content_body_btnGroup_btn__line">
-                                                <img src="img/icon-line.svg" alt="" width="" height="" aria-hidden="true">
-                                                LINEで気軽にご相談
-                                                <img src="img/icon-arrow.svg" alt="" width="" height="" aria-hidden="true">
-                                            </a>
-                                            <a href="tel:080-123-4567" class="bl_flow_item_content_body_btnGroup_btn bl_flow_item_content_body_btnGroup_btn__phone">
-                                                <img src="img/icon-phone-white.svg" alt="" width="" height="" aria-hidden="true">
-                                                080-123-4567
-                                                <span class="bl_flow_item_content_body_btnGroup_btn_time">平日 9:00-17:00 営業</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end フローステップ1 -->
-
-                            <!-- フローステップ2 -->
-                            <div class="bl_flow_item">
-                                <div class="bl_flow_item_icon">
-                                    <img src="img/icon-phone.svg" alt="" width="" height="" aria-hidden="true">
-                                </div>
-                                <div class="bl_flow_item_content">
-                                    <h3 class="bl_flow_item_content_ttl">02. 無料現地調査</h3>
-                                    <div class="bl_flow_item_content_body">
-                                        <p class="bl_flow_item_content_body_txt">被害箇所が火災保険の適用箇所か、経験豊富な専門スタッフが調査します</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end フローステップ2 -->
-
-                            <!-- フローステップ3 -->
-                            <div class="bl_flow_item">
-                                <div class="bl_flow_item_icon">
-                                    <img src="img/icon-phone.svg" alt="" width="" height="" aria-hidden="true">
-                                </div>
-                                <div class="bl_flow_item_content">
-                                    <h3 class="bl_flow_item_content_ttl">03. 申請書類の作成</h3>
-                                    <div class="bl_flow_item_content_body">
-                                        <p class="bl_flow_item_content_body_txt">修繕に必要な費用を無料でお見積りいたします。<br>同時に保険会社への申請に必要な書類を作成し、その書類を保険会社へ郵送していただきます。</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end フローステップ3 -->
-
-                            <!-- フローステップ4 -->
-                            <div class="bl_flow_item">
-                                <div class="bl_flow_item_icon">
-                                    <img src="img/icon-phone.svg" alt="" width="" height="" aria-hidden="true">
-                                </div>
-                                <div class="bl_flow_item_content">
-                                    <h3 class="bl_flow_item_content_ttl">04. 鑑定人による現地鑑定</h3>
-                                    <div class="bl_flow_item_content_body">
-                                        <p class="bl_flow_item_content_body_txt">保険会社の専門スタッフまたは委託された鑑定人が、建物の鑑定を行い、修繕箇所の確認を行います。</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end フローステップ4 -->
-
-                            <!-- フローステップ5 -->
-                            <div class="bl_flow_item">
-                                <div class="bl_flow_item_icon">
-                                    <img src="img/icon-phone.svg" alt="" width="" height="" aria-hidden="true">
-                                </div>
-                                <div class="bl_flow_item_content">
-                                    <h3 class="bl_flow_item_content_ttl">04. 復旧工事の打ち合わせ及び工事</h3>
-                                    <div class="bl_flow_item_content_body">
-                                        <p class="bl_flow_item_content_body_txt">弊社スタッフが、工事完了までしっかりとサポートいたします。</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end フローステップ5 -->
-                        </div>
+                        <h2 class="bl_flow_header_ttl">工事までの流れ</h2>
                     </div>
-                </section>
-                <!-- end 工事までの流れ -->
+
+                    <div class="bl_flow_list">
+                        <!-- フローステップ1 -->
+                        <div class="bl_flow_item">
+                            <div class="bl_flow_item_icon">
+                            </div>
+                            <div class="bl_flow_item_content">
+                                <div class="bl_flow_item_content_ttlGroup">
+                                    <img class="bl_flow_item_content_ttlGroup_img bl_flow_item_content_ttlGroup_img_w20h20" src="/img/flow-step.svg" alt="" aria-hidden="true" width="20" height="20">
+                                    <h3 class="bl_flow_item_content_ttl">HPからお問い合わせ</h3>
+                                </div>
+                                <div class="bl_flow_item_content_body">
+                                    <p class="bl_flow_item_content_body_txt">以下のお問い合わせ先よりお問い合わせください</p>
+                                    <div class="bl_flow_item_content_body_btnGroup">
+                                        <a href="#" class="bl_flow_item_content_body_btnGroup_btn bl_flow_item_content_body_btnGroup_btn__line">
+                                            <img class="bl_flow_item_content_body_btnGroup_btn_img" src="/img/line-icon.svg" alt="" width="" height="" aria-hidden="true">
+                                            <div class="bl_flow_item_content_body_btnGroup_btn_group2">
+                                                <div class="bl_flow_item_content_body_btnGroup_btn_group2_group">
+                                                    <span class="bl_flow_item_content_body_btnGroup_btn_lv2">LINE</span>
+                                                    <span>で気軽にご相談</span>
+                                                </div>
+                                                <img class="bl_flow_item_content_body_btnGroup_btn_arrow" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="12" height="12">
+                                            </div>
+                                        </a>
+                                        <a href="tel:070-8524-5047" class="bl_flow_item_content_body_btnGroup_btn bl_flow_item_content_body_btnGroup_btn__phone">
+                                            <img class="bl_flow_item_content_body_btnGroup_btn_img" src="/img/tel-icon-white.svg" alt="" width="" height="" aria-hidden="true">
+                                            <span class="bl_flow_item_content_body_btnGroup_btn_tel">070-8524-5047</span>
+                                            <span class="bl_flow_item_content_body_btnGroup_btn_time">平日 9:00-17:00 営業</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end フローステップ1 -->
+
+                        <!-- フローステップ2 -->
+                        <div class="bl_flow_item">
+                            <div class="bl_flow_item_icon">
+                            </div>
+                            <div class="bl_flow_item_content">
+                                <div class="bl_flow_item_content_ttlGroup">
+                                    <img class="bl_flow_item_content_ttlGroup_img bl_flow_item_content_ttlGroup_img_w20h20" src="/img/flow-step2.svg" alt="" aria-hidden="true" width="20" height="20">
+                                    <h3 class="bl_flow_item_content_ttl">無料現地調査</h3>
+                                </div>
+                                <div class="bl_flow_item_content_body">
+                                    <p class="bl_flow_item_content_body_txt">被害箇所が火災保険の適用箇所か、経験豊富な専門スタッフが調査します</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end フローステップ2 -->
+
+                        <!-- フローステップ3 -->
+                        <div class="bl_flow_item">
+                            <div class="bl_flow_item_icon">
+                            </div>
+                            <div class="bl_flow_item_content">
+                                <div class="bl_flow_item_content_ttlGroup">
+                                    <img class="bl_flow_item_content_ttlGroup_img bl_flow_item_content_ttlGroup_img_w20h20" src="/img/flow-step3.svg" alt="" aria-hidden="true" width="20" height="20">
+                                    <h3 class="bl_flow_item_content_ttl">申請書類の作成</h3>
+                                </div>
+                                <div class="bl_flow_item_content_body">
+                                    <p class="bl_flow_item_content_body_txt">修繕に必要な費用を無料でお見積りいたします。<br>同時に保険会社への申請に必要な書類を作成し、その書類を保険会社へ郵送していただきます。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end フローステップ3 -->
+
+                        <!-- フローステップ4 -->
+                        <div class="bl_flow_item">
+                            <div class="bl_flow_item_icon">
+                            </div>
+                            <div class="bl_flow_item_content">
+                                <div class="bl_flow_item_content_ttlGroup">
+                                    <img class="bl_flow_item_content_ttlGroup_img bl_flow_item_content_ttlGroup_img_w24h24" src="/img/flow-step4.svg" alt="" aria-hidden="true" width="24" height="24">
+                                    <h3 class="bl_flow_item_content_ttl">鑑定人による現地鑑定</h3>
+                                </div>
+                                <div class="bl_flow_item_content_body">
+                                    <p class="bl_flow_item_content_body_txt">保険会社の専門スタッフまたは委託された鑑定人が、建物の鑑定を行い、修繕箇所の確認を行います。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end フローステップ4 -->
+
+                        <!-- フローステップ5 -->
+                        <div class="bl_flow_item">
+                            <div class="bl_flow_item_icon">
+                            </div>
+                            <div class="bl_flow_item_content">
+                                <div class="bl_flow_item_content_ttlGroup">
+                                    <img class="bl_flow_item_content_ttlGroup_img bl_flow_item_content_ttlGroup_img_w24h24" src="/img/flow-step5.svg" alt="" aria-hidden="true" width="24" height="24">
+                                    <h3 class="bl_flow_item_content_ttl">復旧工事の打ち合わせ<br>及び工事</h3>
+                                </div>
+                                <div class="bl_flow_item_content_body">
+                                    <p class="bl_flow_item_content_body_txt">弊社スタッフが、工事完了までしっかりとサポートいたします。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end フローステップ5 -->
+                    </div>
+                </div>
+            </section>
+            <!-- end 工事までの流れ -->
 
                 <!-- FAQ -->
-                <section class="bl_faq">
-                    <div class="bl_faq_inner">
-                        <div class="bl_faq_header">
-                            <div class="bl_faq_header_badge">FAQ</div>
-                            <h2 class="bl_faq_header_ttl">よくあるご質問</h2>
+            <section class="bl_faq">
+                <div class="bl_faq_inner">
+                    <div class="bl_faq_header">
+                        <div class="el_ttlHeader">
+                            <span>faq</span>
                         </div>
-
-                        <ul class="bl_faq_list">
-                            <!-- FAQ1 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">工場や店舗でも火災保険の保証は対応していますか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        はい、対応しています。<br>
-                                        火災保険は一般住宅だけでなく、マンションや賃貸物件、工場や店舗に火災保険の保障は対応しています。
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ1 -->
-
-                            <!-- FAQ2 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">火災保険申請を行うと、保険料はあがりますか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        いいえ、車両などの保険とは違い、保険申請を行っても保険料はあがりません。
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ2 -->
-
-                            <!-- FAQ3 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">災害被害はどこまでが保険対象範囲ですか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        火災保険は火災はもちろん、水災害や風災、落雷、雪災、落雷、ひょう災など…さまざまな被害に保証が適用されます。
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ3 -->
-
-                            <!-- FAQ4 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">窓ガラスの割れた理由がわからない場合、保証は適応されますか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        窓ガラスの破損は、窓ガラスが割れた原因が火災保険の対象となります。そのため、窓ガラスが割れた理由がわからない場合、原則保証の対象とはなりません。
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ4 -->
-
-                            <!-- FAQ5 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">調査費用はかかりますか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        調査費用は完全無料です。
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ5 -->
-
-                            <!-- FAQ6 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">受け取った保険金は必ず修繕に使わないといけませんか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        法律上、使途は定められていません。ただし、未修繕の場合、次回の災害時に再申請できない可能性があるため、修繕することをお勧めします
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ6 -->
-
-                            <!-- FAQ7 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">いつまでの災害なら申請できますか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        基本的に被災から3年以内の災害が対象です。早めの申請をお勧めします
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ7 -->
-
-                            <!-- FAQ8 -->
-                            <li class="bl_faqCard">
-                                <div class="bl_faqCard_question">
-                                    <div class="bl_faqCard_question_iconWrap">
-                                        <img class="bl_faqCard_question_icon" src="" alt="" aria-hidden="true" width="" height="">
-                                    </div>
-                                    <h3 class="bl_faqCard_question_ttl">過去に申請したことがありますが、再度申請できますか？</h3>
-                                </div>
-                                <div class="bl_faqCard_answer">
-                                    <p class="bl_faqCard_answer_txt">
-                                        過去に受給した箇所を修繕済みで、新たな災害による被害であれば申請可能です。また、過去の申請箇所以外であれば申請できます
-                                    </p>
-                                </div>
-                            </li>
-                            <!-- end FAQ8 -->
-                        </ul>
+                        <h2 class="bl_faq_header_ttl">よくあるご質問</h2>
                     </div>
-                </section>
-                <!-- end FAQ -->
+
+                    <ul class="bl_faq_list">
+                        <!-- FAQ1 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">工場や店舗でも火災保険の保証は対応していますか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    はい、対応しています。<br>
+                                    火災保険は一般住宅だけでなく、マンションや賃貸物件、工場や店舗に火災保険の保障は対応しています。
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ1 -->
+
+                        <!-- FAQ2 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">火災保険申請を行うと、保険料はあがりますか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    いいえ、車両などの保険とは違い、保険申請を行っても保険料はあがりません。
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ2 -->
+
+                        <!-- FAQ3 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">災害被害はどこまでが保険対象範囲ですか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    火災保険は火災はもちろん、水災害や風災、落雷、雪災、落雷、ひょう災など…さまざまな被害に保証が適用されます。
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ3 -->
+
+                        <!-- FAQ4 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">窓ガラスの割れた理由がわからない場合、保証は適応されますか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    窓ガラスの破損は、窓ガラスが割れた原因が火災保険の対象となります。そのため、窓ガラスが割れた理由がわからない場合、原則保証の対象とはなりません。
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ4 -->
+
+                        <!-- FAQ5 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">調査費用はかかりますか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    調査費用は完全無料です。
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ5 -->
+
+                        <!-- FAQ6 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">受け取った保険金は必ず修繕に使わないといけませんか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    法律上、使途は定められていません。ただし、未修繕の場合、次回の災害時に再申請できない可能性があるため、修繕することをお勧めします
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ6 -->
+
+                        <!-- FAQ7 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">いつまでの災害なら申請できますか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    基本的に被災から3年以内の災害が対象です。早めの申請をお勧めします
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ7 -->
+
+                        <!-- FAQ8 -->
+                        <li class="bl_faqCard">
+                            <div class="bl_faqCard_question">
+                                <div class="bl_faqCard_question_iconWrap">
+                                    <img class="bl_faqCard_question_icon" src="/img/faq-icon.svg" alt="" aria-hidden="true" width="31" height="31">
+                                </div>
+                                <h3 class="bl_faqCard_question_ttl">過去に申請したことがありますが、再度申請できますか？</h3>
+                            </div>
+                            <div class="bl_faqCard_answer">
+                                <p class="bl_faqCard_answer_txt">
+                                    過去に受給した箇所を修繕済みで、新たな災害による被害であれば申請可能です。また、過去の申請箇所以外であれば申請できます
+                                </p>
+                            </div>
+                        </li>
+                        <!-- end FAQ8 -->
+                    </ul>
+                </div>
+            </section>
+            <!-- end FAQ -->
 
                 <!-- 会社概要 -->
-                <section class="bl_company">
-                    <div class="bl_company_inner">
-                        <!-- セクションヘッダー -->
-                        <div class="bl_company_header">
-                            <div class="bl_company_header_tag">COMPANY</div>
-                            <h2 class="bl_company_header_ttl">会社概要</h2>
+            <section class="bl_company">
+                <div class="bl_company_inner">
+                    <!-- セクションヘッダー -->
+                    <div class="bl_company_header">
+                        <div class="el_ttlHeader">
+                            <span>company</span>
                         </div>
-                        <!-- end セクションヘッダー -->
-
-                        <!-- 会社情報テーブル -->
-                        <div class="bl_company_table">
-                            <dl class="bl_company_table_list">
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">企業名</dt>
-                                    <dd class="bl_company_table_list_item_desc">NY HOME</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">代表者名</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">住所</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">創業年月</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">電話番号</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">FAX</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">業務内容</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">営業時間</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                                <div class="bl_company_table_list_item">
-                                    <dt class="bl_company_table_list_item_term">登録番号</dt>
-                                    <dd class="bl_company_table_list_item_desc">ダミー</dd>
-                                </div>
-                            </dl>
-                        </div>
-                        <!-- end 会社情報テーブル -->
+                        <h2 class="bl_company_header_ttl">会社概要</h2>
                     </div>
-                </section>
-                <!-- end 会社概要 -->
+                    <!-- end セクションヘッダー -->
+
+                    <!-- 会社情報テーブル -->
+                    <div class="bl_company_table">
+                        <dl class="bl_company_table_list">
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">企業名</dt>
+                                <dd class="bl_company_table_list_item_desc">株式会社NYHOME</dd>
+                            </div>
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">代表者名</dt>
+                                <dd class="bl_company_table_list_item_desc">檀上友太</dd>
+                            </div>
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">住所</dt>
+                                <dd class="bl_company_table_list_item_desc">
+                                    <span>
+                                        ■ 本社<br>
+                                        石川県金沢市本江町1-1白川ビル1階
+                                    </span>
+                                    <span>
+                                        ■ 広島営業所<br>
+                                        広島県広島市東区福田町105-1
+                                    </span>
+                                </dd>
+                            </div>
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">電話番号</dt>
+                                <dd class="bl_company_table_list_item_desc">070-8524-5047</dd>
+                            </div>
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">業務内容</dt>
+                                <dd class="bl_company_table_list_item_desc">
+                                    土木工事業<br>
+                                    建築事業<br>
+                                    屋根工事業<br>
+                                    塗装工事業<br>
+                                    解体工事業<br>
+                                    前各号に附帯又は関連する一切の事業
+                                </dd>
+                            </div>
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">営業時間</dt>
+                                <dd class="bl_company_table_list_item_desc">10:00-18:00</dd>
+                            </div>
+                            <div class="bl_company_table_list_item">
+                                <dt class="bl_company_table_list_item_term">定休日</dt>
+                                <dd class="bl_company_table_list_item_desc">水曜日</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <!-- end 会社情報テーブル -->
+                </div>
+            </section>
+            <!-- end 会社概要 -->
 
             </main>
             <!-- footer -->
             <footer class="bl_footer">
                 <div class="bl_footer_inner">
+                    <div class="bl_footer_ctaWrap">            <!-- CTA -->
+                        <div class="bl_cta">
+                            <div class="bl_cta_inner">
+                                <!-- CTAメッセージ -->
+                                <div class="bl_cta_msg">
+                                    <span class="bl_cta_msg_tag">相談無料</span>
+                                    <span class="bl_cta_msg_txt">お気軽にお問い合わせください！</span>
+                                </div>
+                                <!-- end CTAメッセージ -->
+
+                                <!-- CTAボタングループ -->
+                                <div class="bl_cta_btnGroup">
+                                    <!-- 電話ボタン -->
+                                    <div class="bl_cta_btnGroup_item">
+                                        <a href="tel:070-8524-5047" class="bl_cta_btnGroup_item_link">
+                                            <div class="bl_cta_btnGroup_item_iconWrap">
+                                                <img src="/img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                            </div>
+                                            <div class="bl_cta_btnGroup_item_txtGroup">
+                                                <span class="bl_cta_btnGroup_item_txtGroup_tel">070-8524-5047</span>
+                                                <span class="bl_cta_btnGroup_item_txtGroup_time">平日 9:00-17:00 営業</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- end 電話ボタン -->
+
+                                    <!-- LINEボタン -->
+                                    <div class="bl_cta_btnGroup_item">
+                                        <a href="#" class="bl_cta_btnGroup_item_link">
+                                            <!-- TODO:LINEリンク設定 -->
+                                            <div class="bl_cta_btnGroup_item_iconWrap">
+                                                <img src="/img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                            </div>
+                                            <div class="bl_cta_btnGroup_item_txtGroup">
+                                                <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
+                                                <div class="bl_cta_btnGroup_item_txtGroup_group">
+                                                    <span class="bl_cta_btnGroup_item_txtGroup_desc">
+                                                        で気軽にご相談
+                                                    </span>
+                                                    <span class="bl_cta_btnGroup_item_txtGroup_arrow">
+                                                        <img class="bl_cta_btnGroup_item_txtGroup_arrow_img" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="9" height="9">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- end LINEボタン -->
+                                </div>
+                                <!-- end CTAボタングループ -->
+                            </div>
+                        </div>
+                        <!-- end CTA -->
+                    </div>
                     <!-- フッターナビゲーション -->
                     <nav class="bl_footer_nav">
                         <ul class="bl_footer_nav_list">
@@ -652,7 +963,110 @@
             </footer>
             <!-- end footer -->
         </div>
-        <!-- TODO:divでナビゲーション(pc) -->
-        <!-- TODO:divでナビゲーション(pc) -->
+        <!-- CTA -->
+        <div class="bl_cta bl_cta__spBottom">
+            <div class="bl_cta_inner">
+                <!-- CTAボタングループ -->
+                <div class="bl_cta_btnGroup">
+                    <!-- 電話ボタン -->
+                    <div class="bl_cta_btnGroup_item">
+                        <a href="tel:070-8524-5047" class="bl_cta_btnGroup_item_link">
+                            <div class="bl_cta_btnGroup_item_iconWrap">
+                                <img src="/img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                            </div>
+                            <div class="bl_cta_btnGroup_item_txtGroup">
+                                <span class="bl_cta_btnGroup_item_txtGroup_tel">070-8524-5047</span>
+                                <span class="bl_cta_btnGroup_item_txtGroup_time">平日 9:00-17:00 営業</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end 電話ボタン -->
+
+                    <!-- LINEボタン -->
+                    <div class="bl_cta_btnGroup_item">
+                        <a href="#" class="bl_cta_btnGroup_item_link">
+                            <!-- TODO:LINEリンク設定 -->
+                            <div class="bl_cta_btnGroup_item_iconWrap">
+                                <img src="/img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                            </div>
+                            <div class="bl_cta_btnGroup_item_txtGroup">
+                                <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
+                                <div class="bl_cta_btnGroup_item_txtGroup_group">
+                                    <span class="bl_cta_btnGroup_item_txtGroup_desc">
+                                        で気軽にご相談
+                                    </span>
+                                    <span class="bl_cta_btnGroup_item_txtGroup_arrow">
+                                        <img class="bl_cta_btnGroup_item_txtGroup_arrow_img" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="9" height="9">
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- end LINEボタン -->
+                </div>
+                <!-- end CTAボタングループ -->
+            </div>
+        </div>
+        <!-- end CTA -->
+
+        <!-- pc表示ロゴ -->
+        <img class="un_hide__12" style="position:fixed;width:170px;height:40px;top:40px;left:50px;z-index:30;" src="/img/header-logo.jpg" alt="NYHOME" width="170" height="40">
+        <!-- end pc表示ロゴ -->
+
+        <!-- end 表示CTA -->
+        <div class="un_hide__12" style="width: 343px;position: fixed;bottom: 20px;right: 20px;z-index: 30;">            <!-- CTA -->
+            <div class="bl_cta">
+                <div class="bl_cta_inner">
+                    <!-- CTAメッセージ -->
+                    <div class="bl_cta_msg">
+                        <span class="bl_cta_msg_tag">相談無料</span>
+                        <span class="bl_cta_msg_txt">お気軽にお問い合わせください！</span>
+                    </div>
+                    <!-- end CTAメッセージ -->
+
+                    <!-- CTAボタングループ -->
+                    <div class="bl_cta_btnGroup">
+                        <!-- 電話ボタン -->
+                        <div class="bl_cta_btnGroup_item">
+                            <a href="tel:070-8524-5047" class="bl_cta_btnGroup_item_link">
+                                <div class="bl_cta_btnGroup_item_iconWrap">
+                                    <img src="/img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                </div>
+                                <div class="bl_cta_btnGroup_item_txtGroup">
+                                    <span class="bl_cta_btnGroup_item_txtGroup_tel">070-8524-5047</span>
+                                    <span class="bl_cta_btnGroup_item_txtGroup_time">平日 9:00-17:00 営業</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- end 電話ボタン -->
+
+                        <!-- LINEボタン -->
+                        <div class="bl_cta_btnGroup_item">
+                            <a href="#" class="bl_cta_btnGroup_item_link">
+                                <!-- TODO:LINEリンク設定 -->
+                                <div class="bl_cta_btnGroup_item_iconWrap">
+                                    <img src="/img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                                </div>
+                                <div class="bl_cta_btnGroup_item_txtGroup">
+                                    <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
+                                    <div class="bl_cta_btnGroup_item_txtGroup_group">
+                                        <span class="bl_cta_btnGroup_item_txtGroup_desc">
+                                            で気軽にご相談
+                                        </span>
+                                        <span class="bl_cta_btnGroup_item_txtGroup_arrow">
+                                            <img class="bl_cta_btnGroup_item_txtGroup_arrow_img" src="/img/arrow-white.svg" alt="" aria-hidden="true" width="9" height="9">
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- end LINEボタン -->
+                    </div>
+                    <!-- end CTAボタングループ -->
+                </div>
+            </div>
+            <!-- end CTA -->
+        </div>
+        <!-- end pc表示CTA -->
     </body>
 </html>
