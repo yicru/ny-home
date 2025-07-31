@@ -23,4 +23,5 @@ body {
     @include g.mq('tab') {
         font-size: 16px;
     }
+    background: var(--color-bg-orange6);
 }
