@@ -84,6 +84,7 @@
 }
 
 .bl_header_btnGroup_iconWrap_link {
+    display: flex;
     @include g.mq('tab') {
 
     }
