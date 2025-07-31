@@ -24,19 +24,19 @@ $blog_info = [
     //トップページのurl(httpから入力)
     'home-url' => 'localhost/htdocs/github/',
     //keywords(,区切りでキーワード)
-    'keywords' => '',
+    'keywords' => '<!-- TODO:keywords(,区切りでキーワード) -->',
     //robots
     'robots' => 'noindex, nofollow',
     //管理者ユーザー、1人のみ
     'admin' => $user['admin'],
     //ファビコン(url)
-    'favicon' => 'img/favicon.ico',
+    'favicon' => '<!-- TODO:ファビコン(url)設定(img/favicon.ico等) -->',
     //link rel iconのurl
-    'icon' => 'img/favicon.ico',
+    'icon' => '<!-- TODO:link rel iconのurl設定(img/favicon.ico等) -->',
     //link rel iconのサイズ
-    'icon-sizes' => '128x128',
-    //apple-touch-iconのurl
-    'apple-touch-icon' => 'img/webclip.png',
+    'icon-sizes' => '<!-- TODO:アイコンサイズ設定(128x128等) -->',
+    //apple-touch-iconのurl img/webclip.png
+    'apple-touch-icon' => '<!-- TODO:アイコン設定(img/webclip.png等) -->',
 
     //サイトSNS
     'sns' => [
