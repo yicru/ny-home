@@ -2,13 +2,14 @@
 
 /* ブロックモジュール */
 .bl_footer {
+    background: var(--color-bg-footerGray);
+    padding-top: 30px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_footer_inner {
@@ -18,67 +19,99 @@
     @include g.mq('pc') {
 
     }
-
 }
 
-.bl_footer_nav {
+.bl_footer_ctaWrap {
+    width: 91.6%;
+    margin: 0 auto;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_footer_nav {
+    margin-top: 30px;
+    border-top: 1px solid var(--color-border-gray);
+    @include g.mq('tab') {
+        
+    }
+    @include g.mq('pc') {
+
+    }
 }
 
 //リスト
 .bl_footer_nav_list {
+    display: flex;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
+}
 
+.bl_footer_nav_item:first-child {
+    border-right: 1px solid var(--color-border-gray);
 }
 
 .bl_footer_nav_item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
+//文章「お問い合わせ, プライバシーポリシー」
 .bl_footer_nav_item_link {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0em;
+    color: var(--color-font-gray2);
+    //padding: 15px 0;
+    padding: 15px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_footer_copy {
+    background: var(--color-bg-gray);
+    padding: 10px 0 90px;
     @include g.mq('tab') {
-
+        padding: 10px 0;
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-//文章
+//文章「© NY HOME All Rights Reserved.」
 .bl_footer_copy_txt {
+    font-family: var(--font-family-footer);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: var(--color-font-gray2);
+    text-align: center;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
