@@ -5,6 +5,13 @@ auto_indent_start();
 <!-- footer -->
 <footer class="bl_footer">
     <div class="bl_footer_inner">
+        <div class="bl_footer_ctaWrap"><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+            //現在のインデントの個数
+            $indent_level = 3;?>
+            <?php //CTA
+                include( "parts/bl_cta/cta.php" )
+            ?>
+        </div>
         <!-- フッターナビゲーション -->
         <nav class="bl_footer_nav">
             <ul class="bl_footer_nav_list">
