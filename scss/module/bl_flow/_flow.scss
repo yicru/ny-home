@@ -6,175 +6,325 @@
     background-size: 100% auto;
     background-repeat: repeat-y;
     background-position: top center;
+    padding: 60px 0 80px;
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_flow_inner {
+    width: 91.6%;
+    margin: 0 auto;
+    max-width: 1200px;
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_flow_header {
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
-.bl_flow_header_badge {
-    @include g.mq('tab') {
-
-    }
-    @include g.mq('pc') {
-
-    }
-
-}
-
-//タイトル
+//タイトル「工事までの流れ」
 .bl_flow_header_ttl {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #3E3E3E;
+    margin-top: 10px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 //リスト
 .bl_flow_list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_flow_item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    counter-increment: section;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_flow_item_icon {
+    flex-shrink: 0;
+    width: 35.46px;
+    height: 35.46px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-white);
+    border: 2.77px solid var(--color-border-orange);
+    position: relative;
+    z-index: 40;
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
+}
+.bl_flow_item_icon::after {
+    content: counter(section);
+    font-family: var(--font-family-base);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    color: var(--color-font-orange);
 }
 
 .bl_flow_item_content {
+    flex: 1;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 25px;
+        width: 2px;
+        height: calc(100% + 19px);
+        background: var(--color-border-orange2);
+        z-index: 10;
+    }
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-//タイトル
-.bl_flow_item_content_ttl {
-    @include g.mq('tab') {
+// 別ルールとして最後の要素の線を消す
+.bl_flow_item:last-child .bl_flow_item_content::after {
+    display: none;
+}
 
+//タイトル「01. HPからお問い合わせ, 02. 無料現地調査, 03. 申請書類の作成, 04. 鑑定人による現地鑑定, 04. 復旧工事の打ち合わせ及び工事」
+.bl_flow_item_content_ttl {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #3E3E3E;
+
+    @include g.mq('tab') {
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_flow_item_content_body {
+    padding: 10px 14px;
+    background: var(--color-bg-white);
+    border-radius: 4px;
+    margin-top: 10px;
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
-//文章
+//文章「以下のお問い合わせ先よりお問い合わせください, 被害箇所が火災保険の適用箇所か、経験豊富な専門スタッフが調査します, 修繕に必要な費用を無料でお見積りいたします。同時に保険会社への申請に必要な書類を作成し、その書類を保険会社へ郵送していただきます。, 保険会社の専門スタッフまたは委託された鑑定人が、建物の鑑定を行い、修繕箇所の確認を行います。, 弊社スタッフが、工事完了までしっかりとサポートいたします。」
 .bl_flow_item_content_body_txt {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0em;
+    color: var(--color-font-base);
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_flow_item_content_body_btnGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
-
 }
 
 .bl_flow_item_content_body_btnGroup_btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 13px 0 13px 12px;
+    flex-direction: row;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
-
+        
     }
+}
+.bl_flow_item_content_body_btnGroup_btn__line {
+    line-height: 1;
+}
 
+.bl_flow_item_content_body_btnGroup_btn_group2 {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    min-width: calc(100% - 6px - 12px - 30px);
+}
+
+.bl_flow_item_content_body_btnGroup_btn_group2_group {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+//LINE
+.bl_flow_item_content_body_btnGroup_btn_lv2 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--color-font-white);
+}
+
+.bl_flow_item_content_body_btnGroup_btn_img {
+    width: 30px;
+    height: 30px;
+}
+
+.bl_flow_item_content_body_btnGroup_btn_arrow {
+    width: 12px;
+    height: 12px;
 }
 
 .bl_flow_item_content_body_btnGroup_btn__line {
+    background: var(--color-bg-line);
+    color: var(--color-font-white);
+    &:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
     @include g.mq('tab') {
 
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_flow_item_content_body_btnGroup_btn__phone {
+    background: var(--color-bg-tel);
+    color: var(--color-font-white);
+    &:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
 
     }
-
 }
 
 .bl_flow_item_content_body_btnGroup_btn_time {
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--color-font-gray);
+    background: var(--color-bg-white);
+    padding: 1 2px;
     @include g.mq('tab') {
-
+        
     }
     @include g.mq('pc') {
 
     }
+}
+.bl_flow_item_content_body_btnGroup_btn_tel {
+    //font-family: Inter;
+    font-weight: 700;
+    font-size: 13.5px;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+    color: var(--color-font-white);
+}
 
+//タイトルのグループ
+.bl_flow_item_content_ttlGroup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    //padding: 4.5px 0;
+    min-height: 37px;
+}
+
+.bl_flow_item_content_ttlGroup_img_w20h20 {
+    width: 20px;
+    height: 20px;
+}
+
+.bl_flow_item_content_ttlGroup_img_w24h24 {
+    width: 24px;
+    height: 24px;
 }
