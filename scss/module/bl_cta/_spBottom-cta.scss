@@ -1,0 +1,20 @@
+@use "../../global/" as g;
+
+/* ブロックモジュール モディファイア */
+.bl_cta__spBottom {
+    padding: 10px 16px 10px;
+    background: linear-gradient(transparent, #ffffffc5);
+    position: fixed;
+    bottom: 0;
+    max-width: 375px;
+    overflow: hidden;
+    margin: 0 auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+    @include g.mq('tab') {
+        display: none;
+    }
+    .bl_cta_btnGroup_item_link {
+        padding: 11px 0;
+    }
+}

@@ -42,8 +42,10 @@ if( !isset($_GET["debug"]) ){
         <!-- font -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <!-- TODO:使用フォントの設定 -->
+        <!-- noto sans -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+        <!-- dm sans -->
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
 
         <!-- css共通 -->
         <link rel="stylesheet" href="css/style-top.css">
@@ -101,9 +103,21 @@ if( !isset($_GET["debug"]) ){
             //現在のインデントの個数
             $indent_level = 2;?>
 
-        <!-- TODO:footerしたのリンクを設定 -->
-        <!-- TODO:divでナビゲーション(pc) -->
-        <!-- TODO:divでナビゲーション(pc) -->
+        <?php //sp下固定
+        include( "parts/bl_cta/spBottom-cta.php" )?>
+
+        <?php //<!-- インライン要素はモジュール化しない -->?><!-- pc表示ロゴ -->
+        <img class="un_hide__12" style="position:fixed;width:170px;height:40px;top:40px;left:50px;z-index:30;" src="/img/header-logo.jpg" alt="NYHOME" width="170" height="40">
+        <!-- end pc表示ロゴ -->
+
+        <?php //<!-- 同じく単純な構造なので、parts化しない -->?><!-- end 表示CTA -->
+        <div class="un_hide__12" style="width: 343px;position: fixed;bottom: 20px;right: 20px;z-index: 30;"><?php //余計な改行、インデントを防ぐためのphpタグ開始位置
+            //現在のインデントの個数
+            $indent_level = 3;?>
+            <?php //CTA
+            include( "parts/bl_cta/cta.php" )?>
+        </div>
+        <!-- end pc表示CTA -->
     </body>
 </html>
 <?php
