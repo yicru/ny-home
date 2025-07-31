@@ -18,7 +18,7 @@ auto_indent_start();
             <div class="bl_cta_btnGroup_item">
                 <a href="tel:070-8524-5047" class="bl_cta_btnGroup_item_link">
                     <div class="bl_cta_btnGroup_item_iconWrap">
-                        <img src="img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                        <img src="/img/tel-icon-white.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
                     </div>
                     <div class="bl_cta_btnGroup_item_txtGroup">
                         <span class="bl_cta_btnGroup_item_txtGroup_tel">070-8524-5047</span>
@@ -33,7 +33,7 @@ auto_indent_start();
                 <a href="#" class="bl_cta_btnGroup_item_link">
                     <!-- TODO:LINEリンク設定 -->
                     <div class="bl_cta_btnGroup_item_iconWrap">
-                        <img src="img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
+                        <img src="/img/line-icon.svg" alt="" width="32" height="32" class="bl_cta_btnGroup_item_iconWrap_icon">
                     </div>
                     <div class="bl_cta_btnGroup_item_txtGroup">
                         <span class="bl_cta_btnGroup_item_txtGroup_title">LINE</span>
