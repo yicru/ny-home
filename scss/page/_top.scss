@@ -1,8 +1,9 @@
 // トップページで使用するモジュール
 @use "../module/bl_header/header";
 @use "../module/bl_kv/kv";
-@use "../module/bl_cta/top-kvBottom-cta";
 @use "../module/bl_cta/cta";
+@use "../module/bl_cta/top-kvBottom-cta";
+@use "../module/bl_cta/spBottom-cta";
 @use "../module/bl_footer/footer";
 @use "../module/bl_worries/worries";
 @use "../module/bl_future/future";
@@ -18,7 +19,12 @@
 @use "../module/bl_pointCard/pointCard";
 
 .bl_spArea {
-    
+    background-image: url(../img/pc-bg.jpg);
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    background-position: top center;
+    background-attachment: fixed;
+    position: relative;
 }
 
 .bl_spArea_inner {
